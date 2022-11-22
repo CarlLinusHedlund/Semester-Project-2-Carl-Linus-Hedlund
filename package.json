@@ -8,10 +8,15 @@
         "build": "vite build",
         "preview": "vite preview",
         "prettier": "npx prettier --write .",
-        "pretty quick": "pretty quick"
+        "pretty quick": "pretty quick",
+        "lint": "npx eslint .",
+        "lint fix": "npx eslint --fix ."
     },
     "devDependencies": {
         "autoprefixer": "^10.4.13",
+        "eslint": "^8.28.0",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-plugin-import": "^2.26.0",
         "husky": "^3.1.0",
         "postcss": "^8.4.19",
         "prettier": "^2.7.1",
