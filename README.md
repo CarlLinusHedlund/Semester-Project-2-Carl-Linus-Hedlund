@@ -1,4 +1,5 @@
 # Semester-Project-2-Carl-Linus-Hedlund
+
 Goal
 To take the skills learned over the past three semesters and create an auction website.
 
@@ -69,4 +70,3 @@ Include the required links in the Moodle delivery window using this template for
 All final changes must be merged into the default branch main or master. Other branches will not be checked.
 
 Ensure that the readme.md file describes your project thoroughly, including how to setup and run the project locally and any special instructions for testers.
-
