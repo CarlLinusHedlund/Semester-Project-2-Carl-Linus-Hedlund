@@ -28,5 +28,8 @@
         "hooks": {
             "pre-commit": "pretty-quick --staged"
         }
+    },
+    "dependencies": {
+        "typed.js": "^2.0.12"
     }
 }
