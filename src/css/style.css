@@ -1,3 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=K2D:wght@100;200;300;400;500;600&family=NTR&family=Oswald:wght@200;300;400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Rowdies:wght@300;400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.activeDropdown {
+@apply h-screen
+}
+
+.activeMenu {
+@apply after:opacity-0 before:top-0 before:rotate-90 rotate-45
+}
+
+.headerShadow{
+filter: drop-shadow(0px 33px 39px rgba(0, 0, 0, 0.14)) drop-shadow(0px 13.7866px 16.2933px rgba(0, 0, 0, 0.10064)) drop-shadow(0px 7.37098px 8.71116px rgba(0, 0, 0, 0.083455)) drop-shadow(0px 4.13211px 4.88341px rgba(0, 0, 0, 0.07)) drop-shadow(0px 2.19453px 2.59354px rgba(0, 0, 0, 0.056545)) drop-shadow(0px 0.913195px 1.07923px rgba(0, 0, 0, 0.0393604))
+}
+
+.bannerShadow {
+    text-shadow: 0px 9px 17px rgba(0, 0, 0, 0.26), 0px 3.28515px 6.20528px rgba(0, 0, 0, 0.179395), 0px 1.59488px 3.01255px rgba(0, 0, 0, 0.144636), 0px 0.781839px 1.47681px rgba(0, 0, 0, 0.115364), 0px 0.30914px 0.583932px rgba(0, 0, 0, 0.0806048);
+}
