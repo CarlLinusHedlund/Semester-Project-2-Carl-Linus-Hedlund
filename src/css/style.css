@@ -20,8 +20,23 @@
         drop-shadow(0px 0.913195px 1.07923px rgba(0, 0, 0, 0.0393604));
 }
 
-.bannerShadow {
-    text-shadow: 0px 9px 17px rgba(0, 0, 0, 0.17), 0px 3.28515px 6.20528px rgba(0, 0, 0, 0.117297),
-        0px 1.59488px 3.01255px rgba(0, 0, 0, 0.0945694), 0px 0.781839px 1.47681px rgba(0, 0, 0, 0.0754306),
-        0px 0.30914px 0.583932px rgba(0, 0, 0, 0.0527031);
+.btnShadowWhite {
+    box-shadow: 0px 6px 27px rgba(255, 255, 255, 0.264), 0px 2.50666px 11.28px rgba(255, 255, 255, 0.135),
+        0px 1.34018px 6.0308px rgba(255, 255, 255, 0.0596107), 0px 0.751293px 3.38082px rgba(255, 255, 255, 0.05),
+        0px 0.399006px 1.79553px rgba(255, 255, 255, 0.0403893),
+        0px 0.166035px 0.747159px rgba(255, 255, 255, 0.0281146);
+}
+
+.productCardShadow {
+    box-shadow: 0px 6px 42px rgba(0, 0, 0, 0.08), 0px 0.751293px 5.25905px rgba(0, 0, 0, 0.04);
+}
+
+.productCardImgShadow {
+    filter: drop-shadow(0px 9px 49px rgba(0, 0, 0, 0.113)) drop-shadow(0px 1.12694px 6.13556px rgba(0, 0, 0, 0.415));
+}
+
+.productCardBtnShadow {
+    box-shadow: 0px 6px 109px rgba(0, 0, 0, 0.11), 0px 2.50666px 45.5376px rgba(0, 0, 0, 0.079074),
+        0px 1.34018px 24.3466px rgba(0, 0, 0, 0.0655718), 0px 0.751293px 13.6485px rgba(0, 0, 0, 0.055),
+        0px 0.399006px 7.24861px rgba(0, 0, 0, 0.0444282), 0px 0.166035px 3.01631px rgba(0, 0, 0, 0.030926);
 }

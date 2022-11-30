@@ -59,23 +59,456 @@
             </div>
             <div id="dropdownNav" class="headerShadow h-0 bg-black duration-200"></div>
         </header>
-        <main class="">
-            <div class="flex flex-col md:flex-row max-w-5xl mx-auto mt-40 px-2 relative">
-                <div>
-                    <p class="text-xl font-black">INTER</p>
-                    <h1 class="text-4xl sm:text-5xl md:text-7xl font-black">
-                        BID & LIST <span class="text-4xl sm:text-5xl md:text-7xl auto-type font-black"></span>
+        <main class="h-full">
+            <div
+                class="flex flex-col md:flex-row max-w-5xl mx-auto mt-20 md:mt-40 px-2 relative h-[600px] xs:h-[700px]"
+            >
+                <div class="z-30">
+                    <p class="text-xl lg:text-2xl font-black text-[#2B2B2B]">INTER</p>
+                    <h1
+                        class="text-[#2B2B2B] text-4xl xxs:text-[45px] xs:text-[50px] md:text-7xl lg:text-8xl font-black"
+                    >
+                        BID & LIST
+                        <span
+                            class="text-4xl xxs:text-[45px] xs:text-[50px] md:text-7xl lg:text-8xl auto-type font-black"
+                        ></span>
                     </h1>
-                    <h2 class="text-2xl font-light">
+                    <h2 class="text-1xl sm:text-2xl lg:text-3xl font-light text-[#2B2B2B]">
                         Sign up for an account, <br />And claim your 1000 credits for free
                     </h2>
                 </div>
-                <div class="absolute right-0 top-0 w-[600px]">
+                <div
+                    class="absolute right-3 top-[160px] md:top-[100px] w-full min-w-[350px] xs:w-[450px] sm:w-[550px] md:w-[600px] z-20"
+                >
                     <img class="w-full h-full" src="./img/png/productcard-nike.png" alt="productcard-nike" />
                 </div>
-
-                <div class=""></div>
+                <div
+                    class="absolute right-0 top-[157px] md:top-[98px] w-full min-w-[350px] xs:w-[450px] sm:w-[550px] md:w-[600px] z-10"
+                >
+                    <img class="w-full h-full" src="./img/png/productcard-art.png" alt="productcard-art" />
+                </div>
             </div>
+            <section class="bg-black">
+                <div
+                    class="mx-auto max-w-5xl py-14 px-2 gap-10 sm:gap-14 bg-black flex flex-col-reverse md:flex-row items-center"
+                >
+                    <div class="">
+                        <img src="./img/png/happy-blob.png" alt="happy-blob" />
+                    </div>
+                    <div class="flex flex-col gap-5">
+                        <div class="flex flex-col">
+                            <h2 class="text-primaryWhite-0 text-2xl xxs:text-3xl xs:text-4xl sm:text-5xl font-bold">
+                                1000 CREDITS FOR FREE
+                            </h2>
+                            <p class="text-primaryWhite-0 font-light text-sm sm:text-lg">
+                                Sign up for an account and get <br />
+                                thousand credits for free to shop for
+                            </p>
+                        </div>
+                        <a class="" href="#">
+                            <button
+                                class="border-white btnShadowWhite py-2 px-20 border rounded-md text-white p-1 text-base duration-[480ms] md:hover:bg-white md:hover:text-black"
+                            >
+                                Sign Up
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <section class="mx-auto max-w-5xl flex flex-col py-20 gap-7 items-center">
+                <h2 class="text-2xl">RECENT LISTINGS</h2>
+                <div
+                    class="card-container grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 px-4 gap-4 sm:gap-6 w-full"
+                >
+                    <div
+                        class="bg-white h-[350px] rounded-xl productCardShadow overflow-hidden md:hover:scale-110 duration-150"
+                    >
+                        <div class="w-full h-[49%] bg-black productCardImgShadow">
+                            <img class="object-cover w-full h-full" src="./img/png/shoe-img.jpg" alt="shoe image" />
+                        </div>
+                        <div class="flex flex-col w-full">
+                            <div class="flex flex-col py-2 mx-3 border-b-[1px] border-gray-300 solid">
+                                <p class="text-[8px] text-gray-300">
+                                    by: <span class="text-primaryBlack-0">SOME NAME</span>
+                                </p>
+                                <h2 class="text-primaryBlack-0 text-[15px] font-semibold">PUMA COURT LEGACY</h2>
+                            </div>
+                            <div class="flex px-3 py-4 gap-6">
+                                <div class="flex flex-col">
+                                    <p class="text-[9px] text-gray-300">CURRENT BID</p>
+                                    <p class="text-primaryBlack-0 text-xs font-medium">300,-</p>
+                                </div>
+                                <div class="flex flex-col">
+                                    <p class="text-[9px] text-gray-300">TIME LEFT</p>
+                                    <p class="text-primaryBlack-0 text-xs font-medium">00:00:17:13</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a
+                            class="flex max-w-[240px] bg-white h-8 mx-3 mt-4 justify-between items-center rounded-md productCardBtnShadow"
+                            href="#"
+                        >
+                            <p class="text-[10px] ml-2 text-primaryBlack-0">PLACE A NEW BID</p>
+                            <svg
+                                class="mr-2"
+                                width="13"
+                                height="11"
+                                viewBox="0 0 13 11"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M8.01875 1.7063L11.8125 5.50005L8.01875 9.2938M1.1875 5.50005H11.7062"
+                                    stroke="#444444"
+                                    stroke-width="1.5"
+                                    stroke-miterlimit="10"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
+                    </div>
+                    <div
+                        class="bg-white h-[350px] rounded-xl productCardShadow overflow-hidden md:hover:scale-110 duration-150"
+                    >
+                        <div class="w-full h-[49%] bg-black productCardImgShadow">
+                            <img class="object-cover w-full h-full" src="./img/png/shoe-img.jpg" alt="shoe image" />
+                        </div>
+                        <div class="flex flex-col w-full">
+                            <div class="flex flex-col py-2 mx-3 border-b-[1px] border-gray-300 solid">
+                                <p class="text-[8px] text-gray-300">
+                                    by: <span class="text-primaryBlack-0">SOME NAME</span>
+                                </p>
+                                <h2 class="text-primaryBlack-0 text-[15px] font-semibold">PUMA COURT LEGACY</h2>
+                            </div>
+                            <div class="flex px-3 py-4 gap-6">
+                                <div class="flex flex-col">
+                                    <p class="text-[9px] text-gray-300">CURRENT BID</p>
+                                    <p class="text-primaryBlack-0 text-xs font-medium">300,-</p>
+                                </div>
+                                <div class="flex flex-col">
+                                    <p class="text-[9px] text-gray-300">TIME LEFT</p>
+                                    <p class="text-primaryBlack-0 text-xs font-medium">00:00:17:13</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a
+                            class="flex max-w-[220px] bg-white h-8 mx-3 mt-4 justify-between items-center rounded-md productCardBtnShadow"
+                            href="#"
+                        >
+                            <p class="text-[10px] ml-2 text-primaryBlack-0">PLACE A NEW BID</p>
+                            <svg
+                                class="mr-2"
+                                width="13"
+                                height="11"
+                                viewBox="0 0 13 11"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M8.01875 1.7063L11.8125 5.50005L8.01875 9.2938M1.1875 5.50005H11.7062"
+                                    stroke="#444444"
+                                    stroke-width="1.5"
+                                    stroke-miterlimit="10"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
+                    </div>
+                    <div
+                        class="bg-white h-[350px] rounded-xl productCardShadow overflow-hidden md:hover:scale-110 duration-150"
+                    >
+                        <div class="w-full h-[49%] bg-black productCardImgShadow">
+                            <img class="object-cover w-full h-full" src="./img/png/shoe-img.jpg" alt="shoe image" />
+                        </div>
+                        <div class="flex flex-col w-full">
+                            <div class="flex flex-col py-2 mx-3 border-b-[1px] border-gray-300 solid">
+                                <p class="text-[8px] text-gray-300">
+                                    by: <span class="text-primaryBlack-0">SOME NAME</span>
+                                </p>
+                                <h2 class="text-primaryBlack-0 text-[15px] font-semibold">PUMA COURT LEGACY</h2>
+                            </div>
+                            <div class="flex px-3 py-4 gap-6">
+                                <div class="flex flex-col">
+                                    <p class="text-[9px] text-gray-300">CURRENT BID</p>
+                                    <p class="text-primaryBlack-0 text-xs font-medium">300,-</p>
+                                </div>
+                                <div class="flex flex-col">
+                                    <p class="text-[9px] text-gray-300">TIME LEFT</p>
+                                    <p class="text-primaryBlack-0 text-xs font-medium">00:00:17:13</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a
+                            class="flex max-w-[220px] bg-white h-8 mx-3 mt-4 justify-between items-center rounded-md productCardBtnShadow"
+                            href="#"
+                        >
+                            <p class="text-[10px] ml-2 text-primaryBlack-0">PLACE A NEW BID</p>
+                            <svg
+                                class="mr-2"
+                                width="13"
+                                height="11"
+                                viewBox="0 0 13 11"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M8.01875 1.7063L11.8125 5.50005L8.01875 9.2938M1.1875 5.50005H11.7062"
+                                    stroke="#444444"
+                                    stroke-width="1.5"
+                                    stroke-miterlimit="10"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
+                    </div>
+                    <div
+                        class="bg-white h-[350px] rounded-xl productCardShadow overflow-hidden md:hover:scale-110 duration-150"
+                    >
+                        <div class="w-full h-[49%] bg-black productCardImgShadow">
+                            <img class="object-cover w-full h-full" src="./img/png/shoe-img.jpg" alt="shoe image" />
+                        </div>
+                        <div class="flex flex-col w-full">
+                            <div class="flex flex-col py-2 mx-3 border-b-[1px] border-gray-300 solid">
+                                <p class="text-[8px] text-gray-300">
+                                    by: <span class="text-primaryBlack-0">SOME NAME</span>
+                                </p>
+                                <h2 class="text-primaryBlack-0 text-[15px] font-semibold">PUMA COURT LEGACY</h2>
+                            </div>
+                            <div class="flex px-3 py-4 gap-6">
+                                <div class="flex flex-col">
+                                    <p class="text-[9px] text-gray-300">CURRENT BID</p>
+                                    <p class="text-primaryBlack-0 text-xs font-medium">300,-</p>
+                                </div>
+                                <div class="flex flex-col">
+                                    <p class="text-[9px] text-gray-300">TIME LEFT</p>
+                                    <p class="text-primaryBlack-0 text-xs font-medium">00:00:17:13</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a
+                            class="flex max-w-[220px] bg-white h-8 mx-3 mt-4 justify-between items-center rounded-md productCardBtnShadow"
+                            href="#"
+                        >
+                            <p class="text-[10px] ml-2 text-primaryBlack-0">PLACE A NEW BID</p>
+                            <svg
+                                class="mr-2"
+                                width="13"
+                                height="11"
+                                viewBox="0 0 13 11"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M8.01875 1.7063L11.8125 5.50005L8.01875 9.2938M1.1875 5.50005H11.7062"
+                                    stroke="#444444"
+                                    stroke-width="1.5"
+                                    stroke-miterlimit="10"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
+                    </div>
+                    <div
+                        class="bg-white h-[350px] rounded-xl productCardShadow overflow-hidden md:hover:scale-110 duration-150"
+                    >
+                        <div class="w-full h-[49%] bg-black productCardImgShadow">
+                            <img class="object-cover w-full h-full" src="./img/png/shoe-img.jpg" alt="shoe image" />
+                        </div>
+                        <div class="flex flex-col w-full">
+                            <div class="flex flex-col py-2 mx-3 border-b-[1px] border-gray-300 solid">
+                                <p class="text-[8px] text-gray-300">
+                                    by: <span class="text-primaryBlack-0">SOME NAME</span>
+                                </p>
+                                <h2 class="text-primaryBlack-0 text-[15px] font-semibold">PUMA COURT LEGACY</h2>
+                            </div>
+                            <div class="flex px-3 py-4 gap-6">
+                                <div class="flex flex-col">
+                                    <p class="text-[9px] text-gray-300">CURRENT BID</p>
+                                    <p class="text-primaryBlack-0 text-xs font-medium">300,-</p>
+                                </div>
+                                <div class="flex flex-col">
+                                    <p class="text-[9px] text-gray-300">TIME LEFT</p>
+                                    <p class="text-primaryBlack-0 text-xs font-medium">00:00:17:13</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a
+                            class="flex max-w-[220px] bg-white h-8 mx-3 mt-4 justify-between items-center rounded-md productCardBtnShadow"
+                            href="#"
+                        >
+                            <p class="text-[10px] ml-2 text-primaryBlack-0">PLACE A NEW BID</p>
+                            <svg
+                                class="mr-2"
+                                width="13"
+                                height="11"
+                                viewBox="0 0 13 11"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M8.01875 1.7063L11.8125 5.50005L8.01875 9.2938M1.1875 5.50005H11.7062"
+                                    stroke="#444444"
+                                    stroke-width="1.5"
+                                    stroke-miterlimit="10"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
+                    </div>
+                    <div
+                        class="bg-white h-[350px] rounded-xl productCardShadow overflow-hidden md:hover:scale-110 duration-150"
+                    >
+                        <div class="w-full h-[49%] bg-black productCardImgShadow">
+                            <img class="object-cover w-full h-full" src="./img/png/shoe-img.jpg" alt="shoe image" />
+                        </div>
+                        <div class="flex flex-col w-full">
+                            <div class="flex flex-col py-2 mx-3 border-b-[1px] border-gray-300 solid">
+                                <p class="text-[8px] text-gray-300">
+                                    by: <span class="text-primaryBlack-0">SOME NAME</span>
+                                </p>
+                                <h2 class="text-primaryBlack-0 text-[15px] font-semibold">PUMA COURT LEGACY</h2>
+                            </div>
+                            <div class="flex px-3 py-4 gap-6">
+                                <div class="flex flex-col">
+                                    <p class="text-[9px] text-gray-300">CURRENT BID</p>
+                                    <p class="text-primaryBlack-0 text-xs font-medium">300,-</p>
+                                </div>
+                                <div class="flex flex-col">
+                                    <p class="text-[9px] text-gray-300">TIME LEFT</p>
+                                    <p class="text-primaryBlack-0 text-xs font-medium">00:00:17:13</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a
+                            class="flex max-w-[220px] bg-white h-8 mx-3 mt-4 justify-between items-center rounded-md productCardBtnShadow"
+                            href="#"
+                        >
+                            <p class="text-[10px] ml-2 text-primaryBlack-0">PLACE A NEW BID</p>
+                            <svg
+                                class="mr-2"
+                                width="13"
+                                height="11"
+                                viewBox="0 0 13 11"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M8.01875 1.7063L11.8125 5.50005L8.01875 9.2938M1.1875 5.50005H11.7062"
+                                    stroke="#444444"
+                                    stroke-width="1.5"
+                                    stroke-miterlimit="10"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
+                    </div>
+                    <div
+                        class="bg-white h-[350px] rounded-xl productCardShadow overflow-hidden md:hover:scale-110 duration-150"
+                    >
+                        <div class="w-full h-[49%] bg-black productCardImgShadow">
+                            <img class="object-cover w-full h-full" src="./img/png/shoe-img.jpg" alt="shoe image" />
+                        </div>
+                        <div class="flex flex-col w-full">
+                            <div class="flex flex-col py-2 mx-3 border-b-[1px] border-gray-300 solid">
+                                <p class="text-[8px] text-gray-300">
+                                    by: <span class="text-primaryBlack-0">SOME NAME</span>
+                                </p>
+                                <h2 class="text-primaryBlack-0 text-[15px] font-semibold">PUMA COURT LEGACY</h2>
+                            </div>
+                            <div class="flex px-3 py-4 gap-6">
+                                <div class="flex flex-col">
+                                    <p class="text-[9px] text-gray-300">CURRENT BID</p>
+                                    <p class="text-primaryBlack-0 text-xs font-medium">300,-</p>
+                                </div>
+                                <div class="flex flex-col">
+                                    <p class="text-[9px] text-gray-300">TIME LEFT</p>
+                                    <p class="text-primaryBlack-0 text-xs font-medium">00:00:17:13</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a
+                            class="flex max-w-[220px] bg-white h-8 mx-3 mt-4 justify-between items-center rounded-md productCardBtnShadow"
+                            href="#"
+                        >
+                            <p class="text-[10px] ml-2 text-primaryBlack-0">PLACE A NEW BID</p>
+                            <svg
+                                class="mr-2"
+                                width="13"
+                                height="11"
+                                viewBox="0 0 13 11"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M8.01875 1.7063L11.8125 5.50005L8.01875 9.2938M1.1875 5.50005H11.7062"
+                                    stroke="#444444"
+                                    stroke-width="1.5"
+                                    stroke-miterlimit="10"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
+                    </div>
+                    <div
+                        class="bg-white h-[350px] rounded-xl productCardShadow overflow-hidden md:hover:scale-110 duration-150"
+                    >
+                        <div class="w-full h-[49%] bg-black productCardImgShadow">
+                            <img class="object-cover w-full h-full" src="./img/png/shoe-img.jpg" alt="shoe image" />
+                        </div>
+                        <div class="flex flex-col w-full">
+                            <div class="flex flex-col py-2 mx-3 border-b-[1px] border-gray-300 solid">
+                                <p class="text-[8px] text-gray-300">
+                                    by: <span class="text-primaryBlack-0">SOME NAME</span>
+                                </p>
+                                <h2 class="text-primaryBlack-0 text-[15px] font-semibold">PUMA COURT LEGACY</h2>
+                            </div>
+                            <div class="flex px-3 py-4 gap-6">
+                                <div class="flex flex-col">
+                                    <p class="text-[9px] text-gray-300">CURRENT BID</p>
+                                    <p class="text-primaryBlack-0 text-xs font-medium">300,-</p>
+                                </div>
+                                <div class="flex flex-col">
+                                    <p class="text-[9px] text-gray-300">TIME LEFT</p>
+                                    <p class="text-primaryBlack-0 text-xs font-medium">00:00:17:13</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a
+                            class="flex max-w-[220px] bg-white h-8 mx-3 mt-4 justify-between items-center rounded-md productCardBtnShadow"
+                            href="#"
+                        >
+                            <p class="text-[10px] ml-2 text-primaryBlack-0">PLACE A NEW BID</p>
+                            <svg
+                                class="mr-2"
+                                width="13"
+                                height="11"
+                                viewBox="0 0 13 11"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M8.01875 1.7063L11.8125 5.50005L8.01875 9.2938M1.1875 5.50005H11.7062"
+                                    stroke="#444444"
+                                    stroke-width="1.5"
+                                    stroke-miterlimit="10"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </section>
         </main>
+        <footer class="bg-black w-full">
+            <div class="mx-auto max-w-5xl h-[200px]"></div>
+        </footer>
     </body>
 </html>
