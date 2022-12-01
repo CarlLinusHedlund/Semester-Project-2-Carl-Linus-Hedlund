@@ -8,40 +8,65 @@
         <script type="module" src="./js/main.js" defer></script>
     </head>
     <body class="">
-        <header class="z-20 absolute top-0 lef-0 h-16 bg-transparent w-full">
-            <div class="flex items-center mx-auto max-w-5xl">
-                <div class="font-black text-primaryBlack-0 text-2xl p-2">INTER</div>
-            </div>
-        </header>
-        <main class="flex mx-auto max-w-5xl justify-between">
-            <div class="h-screen w-screen md:w-[400px] z-10 flex items-center max-w-5xl bg-white">
-                <div class="flex flex-col pr-16 pl-2 py-10 w-full gap-4">
-                    <h2 class="text-3xl text-primaryBlack-0 font-extrabold uppercase">Sign Up</h2>
-                    <form id="signup-form" action="" method="post" class="flex flex-col gap-4">
+        <main class="h-screen flex">
+            <div class="w-full md:w-[50%] lg:w-[40%] flex items-center justify-center md:justify-end bg-primaryWhite-0">
+                <div class="flex flex-col mr-20 p-5 gap-4 w-full max-w-[350px]">
+                    <h2 class="text-4xl text-primaryBlack-0 font-extrabold uppercase">Sign Up</h2>
+                    <form id="signup-form" action="" method="post" class="flex flex-col gap-5 max-w-[320px]">
                         <div class="flex flex-col gap-2">
                             <label for="name" class="text-sm font-normal text-primaryGray-0">Name</label>
-                            <input type="text" name="name" id="nameInput" class="bg-primaryWhite-0 w-full h-10 rounded-lg inputShadow" />
+                            <input type="text" name="name" id="nameInput" class="bg-primaryWhite-0 w-full h-10 rounded-lg border border-gray-400 outline-none p-1" />
                         </div>
                         <div class="flex flex-col gap-2">
-                            <label for="email" class="text-sm font-normal text-primaryGray-0">Name</label>
-                            <input type="text" name="email" id="emailInput" class="bg-primaryWhite-0 w-full h-10 rounded-lg inputShadow" />
+                            <label for="email" class="text-sm font-normal text-primaryGray-0">Email</label>
+                            <input type="text" name="email" id="emailInput" class="bg-primaryWhite-0 w-full h-10 rounded-lg border border-gray-400 outline-none p-1" />
                         </div>
                         <div class="flex flex-col gap-2">
-                            <label for="password" class="text-sm font-normal text-primaryGray-0">Name</label>
-                            <input type="text" name="password" id="passwordInput" class="bg-primaryWhite-0 w-full h-10 rounded-lg inputShadow" />
+                            <label for="password" class="text-sm font-normal text-primaryGray-0">Password</label>
+                            <input type="text" name="password" id="passwordInput" class="bg-primaryWhite-0 w-full h-10 rounded-lg border border-gray-400 outline-none p-1" />
                         </div>
                         <div class="flex flex-col gap-2">
-                            <label for="passwordConfirm" class="text-sm font-normal text-primaryGray-0">Name</label>
-                            <input type="text" name="passwordConfirm" id="passwordConfirmInput" class="bg-primaryWhite-0 w-full h-10 rounded-lg inputShadow" />
+                            <label for="passwordConfirm" class="text-sm font-normal text-primaryGray-0">Confirm Password</label>
+                            <input type="text" name="passwordConfirm" id="passwordConfirmInput" class="bg-primaryWhite-0 w-full h-10 rounded-lg border border-gray-400 outline-none p-1" />
+                        </div>
+                        <div class="w-full flex justify-center mt-5">
+                            <button class="w-full h-10 rounded-lg font-normal text-primaryWhite-0 bg-primaryBlack-0 md:hover:bg-gray-700 duration-300" type="submit">Create Account</button>
                         </div>
                     </form>
+                    <div class="flex justify-center">
+                        <p class="text-sm">Already have an account? <a href="#" class="underline">SIGN IN</a></p>
+                    </div>
                 </div>
             </div>
-            <div class="hidden md:flex items-center justify-center">
-                <h1 class="text-white">Welcome to our community</h1>
+            <div class="hidden relative md:flex items-center justify-start w-[50%] lg:w-[60%] h-full bg-primaryBlack-0">
+                <div class="flex flex-col md:pl-10 lg:pl-20 mb-20 gap-1 relative">
+                    <h1 class="text-primaryWhite-0 font-extrabold text-6xl lg:text-7xl">
+                        Welcome to our <br />
+                        community
+                    </h1>
+                    <p class="text-primaryWhite-0 text-base font-light">
+                        Create account to get full access <br />
+                        and claim 1000 credits for free to shop for
+                    </p>
+                    <div class="flex gap-2 items-center h-10 relative">
+                        <div class="relative h-full w-28">
+                            <img src="./img/png/profile1.png" alt="profile picture" class="absolute rounded-full left-1 top-1 w-8 h-8" />
+                            <img src="./img/png/profile2.png" alt="profile picture" class="absolute border-4 border-primaryBlack-0 rounded-full left-6 top-0 w-10 h-10" />
+                            <img src="./img/png/profile3.png" alt="profile picture" class="absolute border-4 border-primaryBlack-0 rounded-full left-12 top-0 w-10 h-10" />
+                            <img src="./img/png/profile4.png" alt="profile picture" class="absolute border-4 border-primaryBlack-0 rounded-full left-[70px] top-0 w-10 h-10" />
+                        </div>
+                        <p class="text-xs text-primaryWhite-0 font-extralight">1k+ registered profiles. Now it's your turn.</p>
+                        <div class="absolute -left-28 -bottom-32 lg:-left-32">
+                            <svg width="235" height="135" viewBox="0 0 335 156" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M327.012 1.75353C328.253 -0.0743061 330.74 -0.550279 332.568 0.690413C334.396 1.9311 334.872 4.41864 333.631 6.24647L327.012 1.75353ZM190.702 133.003L192.01 136.783L192.01 136.783L190.702 133.003ZM0.468109 121.435C-0.569034 119.484 0.171425 117.062 2.12197 116.025L33.908 99.1237C35.8585 98.0865 38.2805 98.827 39.3176 100.778C40.3548 102.728 39.6143 105.15 37.6638 106.187L9.40957 121.211L24.4329 149.465C25.47 151.415 24.7296 153.837 22.779 154.874C20.8285 155.912 18.4065 155.171 17.3693 153.221L0.468109 121.435ZM330.322 4C333.631 6.24647 333.631 6.24742 333.63 6.24877C333.629 6.24976 333.628 6.25151 333.627 6.25348C333.624 6.25742 333.62 6.26296 333.615 6.27008C333.606 6.28434 333.592 6.30495 333.573 6.33183C333.537 6.38558 333.483 6.4644 333.412 6.56757C333.27 6.7739 333.061 7.07764 332.786 7.47307C332.236 8.2639 331.425 9.42158 330.369 10.9003C328.26 13.8575 325.175 18.1 321.262 23.2612C313.44 33.5797 302.294 47.5886 289 62.3465C262.566 91.6908 227.076 124.645 192.01 136.783L189.394 129.223C222.371 117.808 256.69 86.2613 283.056 56.9922C296.161 42.4434 307.162 28.6177 314.887 18.4282C318.748 13.3353 321.787 9.15547 323.857 6.25386C324.892 4.80316 325.685 3.67231 326.217 2.90695C326.483 2.52428 326.684 2.23302 326.817 2.03887C326.884 1.9418 326.933 1.86901 326.966 1.82121C326.982 1.79731 326.994 1.77966 327.002 1.76835C327.006 1.7627 327.009 1.75863 327.01 1.75615C327.011 1.75492 327.012 1.75426 327.012 1.75364C327.012 1.75338 327.012 1.75353 330.322 4ZM192.01 136.783C157.518 148.722 109.964 145.182 71.6053 138.916C52.3144 135.765 35.1399 131.886 22.7885 128.796C16.6106 127.251 11.6338 125.901 8.19583 124.936C6.47669 124.453 5.14193 124.067 4.23372 123.8C3.7796 123.667 3.43209 123.563 3.19646 123.492C3.07865 123.457 2.9888 123.43 2.92757 123.411C2.89696 123.402 2.8735 123.395 2.85728 123.39C2.84918 123.388 2.84288 123.386 2.8384 123.384C2.83616 123.384 2.83416 123.383 2.83304 123.383C2.83151 123.382 2.83043 123.382 3.99989 119.557C5.16934 115.731 5.16918 115.731 5.16947 115.731C5.17017 115.732 5.17091 115.732 5.17232 115.732C5.17513 115.733 5.17975 115.735 5.18618 115.737C5.19904 115.74 5.21911 115.747 5.24632 115.755C5.30074 115.771 5.3837 115.796 5.49453 115.83C5.71621 115.896 6.04939 115.995 6.48881 116.124C7.36768 116.383 8.67139 116.76 10.3579 117.234C13.7311 118.18 18.634 119.51 24.7301 121.035C36.9267 124.087 53.8773 127.914 72.895 131.02C111.154 137.27 156.95 140.453 189.394 129.223L192.01 136.783Z"
+                                    fill="#FDC5C5"
+                                />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="hidden absolute md:block w-[60%] bg-primaryBlack-0 h-screen right-0 top-0"></div>
-            <div class="hidden absolute md:block w-[40%] bg-white h-screen left-0 top-0"></div>
         </main>
     </body>
 </html>
