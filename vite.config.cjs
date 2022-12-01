@@ -3,7 +3,8 @@ const { resolve } = require('path');
 export default {
     root: resolve(__dirname, 'src'),
     resolve: {
-        main: resolve(__dirname, 'src/index.html'),
+        main: resolve(__dirname, 'index.html'),
+        signup: resolve(__dirname, 'signup.html'),
     },
     server: {
         port: 8080,

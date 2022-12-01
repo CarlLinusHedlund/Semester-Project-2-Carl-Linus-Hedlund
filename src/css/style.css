@@ -13,18 +13,13 @@
 }
 
 .headerShadow {
-    filter: drop-shadow(0px 33px 39px rgba(0, 0, 0, 0.14)) drop-shadow(0px 13.7866px 16.2933px rgba(0, 0, 0, 0.10064))
-        drop-shadow(0px 7.37098px 8.71116px rgba(0, 0, 0, 0.083455))
-        drop-shadow(0px 4.13211px 4.88341px rgba(0, 0, 0, 0.07))
-        drop-shadow(0px 2.19453px 2.59354px rgba(0, 0, 0, 0.056545))
-        drop-shadow(0px 0.913195px 1.07923px rgba(0, 0, 0, 0.0393604));
+    filter: drop-shadow(0px 33px 39px rgba(0, 0, 0, 0.14)) drop-shadow(0px 13.7866px 16.2933px rgba(0, 0, 0, 0.10064)) drop-shadow(0px 7.37098px 8.71116px rgba(0, 0, 0, 0.083455))
+        drop-shadow(0px 4.13211px 4.88341px rgba(0, 0, 0, 0.07)) drop-shadow(0px 2.19453px 2.59354px rgba(0, 0, 0, 0.056545)) drop-shadow(0px 0.913195px 1.07923px rgba(0, 0, 0, 0.0393604));
 }
 
 .btnShadowWhite {
-    box-shadow: 0px 6px 27px rgba(255, 255, 255, 0.264), 0px 2.50666px 11.28px rgba(255, 255, 255, 0.135),
-        0px 1.34018px 6.0308px rgba(255, 255, 255, 0.0596107), 0px 0.751293px 3.38082px rgba(255, 255, 255, 0.05),
-        0px 0.399006px 1.79553px rgba(255, 255, 255, 0.0403893),
-        0px 0.166035px 0.747159px rgba(255, 255, 255, 0.0281146);
+    box-shadow: 0px 6px 27px rgba(255, 255, 255, 0.264), 0px 2.50666px 11.28px rgba(255, 255, 255, 0.135), 0px 1.34018px 6.0308px rgba(255, 255, 255, 0.0596107),
+        0px 0.751293px 3.38082px rgba(255, 255, 255, 0.05), 0px 0.399006px 1.79553px rgba(255, 255, 255, 0.0403893), 0px 0.166035px 0.747159px rgba(255, 255, 255, 0.0281146);
 }
 
 .productCardShadow {
@@ -36,7 +31,11 @@
 }
 
 .productCardBtnShadow {
-    box-shadow: 0px 6px 109px rgba(0, 0, 0, 0.11), 0px 2.50666px 45.5376px rgba(0, 0, 0, 0.079074),
-        0px 1.34018px 24.3466px rgba(0, 0, 0, 0.0655718), 0px 0.751293px 13.6485px rgba(0, 0, 0, 0.055),
+    box-shadow: 0px 6px 109px rgba(0, 0, 0, 0.11), 0px 2.50666px 45.5376px rgba(0, 0, 0, 0.079074), 0px 1.34018px 24.3466px rgba(0, 0, 0, 0.0655718), 0px 0.751293px 13.6485px rgba(0, 0, 0, 0.055),
         0px 0.399006px 7.24861px rgba(0, 0, 0, 0.0444282), 0px 0.166035px 3.01631px rgba(0, 0, 0, 0.030926);
+}
+
+.inputShadow {
+    box-shadow: 0px 6px 100px rgba(0, 0, 0, 0.06), 0px 2.50666px 41.7776px rgba(0, 0, 0, 0.0431313), 0px 1.34018px 22.3363px rgba(0, 0, 0, 0.0357664), 0px 0.751293px 12.5216px rgba(0, 0, 0, 0.03),
+        0px 0.399006px 6.6501px rgba(0, 0, 0, 0.0242336), 0px 0.166035px 2.76726px rgba(0, 0, 0, 0.0168687);
 }
