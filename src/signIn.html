@@ -4,26 +4,16 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Sign up | INTER</title>
+        <title>Sign In | INTER</title>
         <script type="module" src="./js/main.js" defer></script>
-        <script type="module" src="./js/signup.js" defer></script>
+        <script type="module" src="./js/signin.js" defer></script>
     </head>
     <body class="">
         <main class="h-screen flex">
             <div class="w-full md:w-[50%] lg:w-[40%] flex items-center justify-center md:justify-end bg-primaryWhite-0">
                 <div class="flex flex-col md:mr-20 p-5 gap-3 w-full max-w-[350px]">
-                    <h2 class="text-4xl md:text-2xl lg:text-3xl text-primaryBlack-0 font-extrabold text-center md:text-start">Sign Up</h2>
+                    <h2 class="text-4xl md:text-2xl lg:text-3xl text-primaryBlack-0 font-extrabold text-center md:text-start">Sign In</h2>
                     <form id="signupForm" action="" method="post" class="flex flex-col gap-8 max-w-[320px]">
-                        <div class="flex flex-col relative">
-                            <label for="name" class="text-sm font-normal text-primaryGray-0">Name</label>
-                            <input
-                                type="text"
-                                name="name"
-                                id="nameInput"
-                                class="bg-primaryWhite-0 w-full h-10 rounded-lg border border-gray-400 outline-none px-2 font-semibold text-center md:text-start"
-                            />
-                            <label for="name" id="nameError" class="absolute -bottom-4 text-red-500 text-[10px] pt-1 hidden">Name invalid</label>
-                        </div>
                         <div class="flex flex-col relative">
                             <label for="email" class="text-sm font-normal text-primaryGray-0">Email</label>
                             <input
@@ -45,24 +35,13 @@
                             />
                             <label id="passwordError" for="passwordError" class="absolute -bottom-4 text-red-500 text-[10px] pt-1 hidden">Name invalid</label>
                         </div>
-                        <div class="flex flex-col relative">
-                            <label for="passwordConfirm" class="text-sm font-normal text-primaryGray-0">Confirm Password</label>
-                            <input
-                                type="password"
-                                name="passwordConfirm"
-                                id="passwordConfirmInput"
-                                class="bg-primaryWhite-0 w-full h-10 rounded-lg border border-gray-400 outline-none px-2 font-semibold text-center md:text-start"
-                            />
-                            <label id="passwordConfirmError" for="passwordConfirm" class="absolute -bottom-4 text-red-500 text-[10px] pt-1 hidden">Name invalid</label>
-                            <label for="passwordConfirm" id="passwordMatchError" class="absolute -bottom-8 text-red-500 text-[10px] pt-1 hidden">Not Match!</label>
-                        </div>
                         <label id="formErrorMessage" class="items-center text-[12px] text-red-500 rounded-lg hidden">Error Message:</label>
                         <div class="w-full flex justify-center mt-5">
                             <button class="w-full h-10 rounded-lg font-normal text-primaryWhite-0 bg-primaryBlack-0 md:hover:bg-gray-700 duration-300" type="submit">Create Account</button>
                         </div>
                     </form>
                     <div class="flex justify-center">
-                        <p class="text-sm font-light">Already have an account? <a href="signIn.html" class="underline font-medium">SIGN IN</a></p>
+                        <p class="text-sm font-light">Need an account? <a href="signup.html" class="underline font-medium">SIGN UP</a></p>
                     </div>
                 </div>
             </div>
