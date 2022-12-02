@@ -6,41 +6,69 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Sign up | INTER</title>
         <script type="module" src="./js/main.js" defer></script>
+        <script type="module" src="./js/signup.js" defer></script>
     </head>
     <body class="">
         <main class="h-screen flex">
             <div class="w-full md:w-[50%] lg:w-[40%] flex items-center justify-center md:justify-end bg-primaryWhite-0">
-                <div class="flex flex-col mr-20 p-5 gap-4 w-full max-w-[350px]">
-                    <h2 class="text-4xl text-primaryBlack-0 font-extrabold uppercase">Sign Up</h2>
-                    <form id="signup-form" action="" method="post" class="flex flex-col gap-5 max-w-[320px]">
-                        <div class="flex flex-col gap-2">
+                <div class="flex flex-col md:mr-20 p-5 gap-3 w-full max-w-[350px]">
+                    <h2 class="text-4xl md:text-2xl lg:text-3xl text-primaryBlack-0 font-extrabold uppercase">Sign Up</h2>
+                    <form id="signupForm" action="" method="post" class="flex flex-col gap-8 max-w-[320px]">
+                        <div class="flex flex-col relative">
                             <label for="name" class="text-sm font-normal text-primaryGray-0">Name</label>
-                            <input type="text" name="name" id="nameInput" class="bg-primaryWhite-0 w-full h-10 rounded-lg border border-gray-400 outline-none p-1" />
+                            <input
+                                type="text"
+                                name="name"
+                                id="nameInput"
+                                class="bg-primaryWhite-0 w-full h-10 rounded-lg border border-gray-400 outline-none px-2 font-light text-center md:text-start"
+                            />
+                            <label for="name" id="nameError" class="absolute -bottom-4 text-red-500 text-[10px] pt-1 hidden">Name invalid</label>
                         </div>
-                        <div class="flex flex-col gap-2">
+                        <div class="flex flex-col relative">
                             <label for="email" class="text-sm font-normal text-primaryGray-0">Email</label>
-                            <input type="text" name="email" id="emailInput" class="bg-primaryWhite-0 w-full h-10 rounded-lg border border-gray-400 outline-none p-1" />
+                            <input
+                                type="text"
+                                name="email"
+                                id="emailInput"
+                                class="bg-primaryWhite-0 w-full h-10 rounded-lg border border-gray-400 outline-none px-2 font-light text-center md:text-start"
+                            />
+                            <label id="emailError" for="emailError" class="absolute -bottom-4 text-red-500 text-[10px] pt-1 hidden">Name invalid</label>
+                            <label for="emailError" id="emailValidError" class="absolute -bottom-8 text-red-500 text-[10px] pt-1 hidden">Email Not Valid</label>
                         </div>
-                        <div class="flex flex-col gap-2">
+                        <div class="flex flex-col relative">
                             <label for="password" class="text-sm font-normal text-primaryGray-0">Password</label>
-                            <input type="text" name="password" id="passwordInput" class="bg-primaryWhite-0 w-full h-10 rounded-lg border border-gray-400 outline-none p-1" />
+                            <input
+                                type="password"
+                                name="password"
+                                id="passwordInput"
+                                class="bg-primaryWhite-0 w-full h-10 rounded-lg border border-gray-400 outline-none px-2 font-medium text-center md:text-start"
+                            />
+                            <label id="passwordError" for="passwordError" class="absolute -bottom-4 text-red-500 text-[10px] pt-1 hidden">Name invalid</label>
                         </div>
-                        <div class="flex flex-col gap-2">
+                        <div class="flex flex-col relative">
                             <label for="passwordConfirm" class="text-sm font-normal text-primaryGray-0">Confirm Password</label>
-                            <input type="text" name="passwordConfirm" id="passwordConfirmInput" class="bg-primaryWhite-0 w-full h-10 rounded-lg border border-gray-400 outline-none p-1" />
+                            <input
+                                type="password"
+                                name="passwordConfirm"
+                                id="passwordConfirmInput"
+                                class="bg-primaryWhite-0 w-full h-10 rounded-lg border border-gray-400 outline-none px-2 font-medium text-center md:text-start"
+                            />
+                            <label id="passwordConfirmError" for="passwordConfirm" class="absolute -bottom-4 text-red-500 text-[10px] pt-1 hidden">Name invalid</label>
+                            <label for="passwordConfirm" id="passwordMatchError" class="absolute -bottom-8 text-red-500 text-[10px] pt-1 hidden">Not Match!</label>
                         </div>
+                        <label id="formErrorMessage" class="items-center text-[12px] text-red-500 rounded-lg hidden">Error Message:</label>
                         <div class="w-full flex justify-center mt-5">
                             <button class="w-full h-10 rounded-lg font-normal text-primaryWhite-0 bg-primaryBlack-0 md:hover:bg-gray-700 duration-300" type="submit">Create Account</button>
                         </div>
                     </form>
                     <div class="flex justify-center">
-                        <p class="text-sm">Already have an account? <a href="#" class="underline">SIGN IN</a></p>
+                        <p class="text-sm font-light">Already have an account? <a href="#" class="underline font-medium">SIGN IN</a></p>
                     </div>
                 </div>
             </div>
-            <div class="hidden relative md:flex items-center justify-start w-[50%] lg:w-[60%] h-full bg-primaryBlack-0">
+            <div class="hidden relative md:flex items-center justify-start w-[50%] lg:w-[60%] h-screen bg-primaryBlack-0">
                 <div class="flex flex-col md:pl-10 lg:pl-20 mb-20 gap-1 relative">
-                    <h1 class="text-primaryWhite-0 font-extrabold text-6xl lg:text-7xl">
+                    <h1 class="text-primaryWhite-0 font-extrabold text-5xl lg:text-7xl">
                         Welcome to our <br />
                         community
                     </h1>
@@ -55,13 +83,19 @@
                             <img src="./img/png/profile3.png" alt="profile picture" class="absolute border-4 border-primaryBlack-0 rounded-full left-12 top-0 w-10 h-10" />
                             <img src="./img/png/profile4.png" alt="profile picture" class="absolute border-4 border-primaryBlack-0 rounded-full left-[70px] top-0 w-10 h-10" />
                         </div>
-                        <p class="text-xs text-primaryWhite-0 font-extralight">1k+ registered profiles. Now it's your turn.</p>
-                        <div class="absolute -left-28 -bottom-32 lg:-left-32">
-                            <svg width="235" height="135" viewBox="0 0 335 156" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <p class="text-[11px] text-primaryWhite-0 font-extralight">1k+ registered profiles. Now it's your turn.</p>
+                        <div class="absolute -left-28 -bottom-32 lg:-left-36">
+                            <svg width="267" height="132" viewBox="0 0 267 132" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
-                                    d="M327.012 1.75353C328.253 -0.0743061 330.74 -0.550279 332.568 0.690413C334.396 1.9311 334.872 4.41864 333.631 6.24647L327.012 1.75353ZM190.702 133.003L192.01 136.783L192.01 136.783L190.702 133.003ZM0.468109 121.435C-0.569034 119.484 0.171425 117.062 2.12197 116.025L33.908 99.1237C35.8585 98.0865 38.2805 98.827 39.3176 100.778C40.3548 102.728 39.6143 105.15 37.6638 106.187L9.40957 121.211L24.4329 149.465C25.47 151.415 24.7296 153.837 22.779 154.874C20.8285 155.912 18.4065 155.171 17.3693 153.221L0.468109 121.435ZM330.322 4C333.631 6.24647 333.631 6.24742 333.63 6.24877C333.629 6.24976 333.628 6.25151 333.627 6.25348C333.624 6.25742 333.62 6.26296 333.615 6.27008C333.606 6.28434 333.592 6.30495 333.573 6.33183C333.537 6.38558 333.483 6.4644 333.412 6.56757C333.27 6.7739 333.061 7.07764 332.786 7.47307C332.236 8.2639 331.425 9.42158 330.369 10.9003C328.26 13.8575 325.175 18.1 321.262 23.2612C313.44 33.5797 302.294 47.5886 289 62.3465C262.566 91.6908 227.076 124.645 192.01 136.783L189.394 129.223C222.371 117.808 256.69 86.2613 283.056 56.9922C296.161 42.4434 307.162 28.6177 314.887 18.4282C318.748 13.3353 321.787 9.15547 323.857 6.25386C324.892 4.80316 325.685 3.67231 326.217 2.90695C326.483 2.52428 326.684 2.23302 326.817 2.03887C326.884 1.9418 326.933 1.86901 326.966 1.82121C326.982 1.79731 326.994 1.77966 327.002 1.76835C327.006 1.7627 327.009 1.75863 327.01 1.75615C327.011 1.75492 327.012 1.75426 327.012 1.75364C327.012 1.75338 327.012 1.75353 330.322 4ZM192.01 136.783C157.518 148.722 109.964 145.182 71.6053 138.916C52.3144 135.765 35.1399 131.886 22.7885 128.796C16.6106 127.251 11.6338 125.901 8.19583 124.936C6.47669 124.453 5.14193 124.067 4.23372 123.8C3.7796 123.667 3.43209 123.563 3.19646 123.492C3.07865 123.457 2.9888 123.43 2.92757 123.411C2.89696 123.402 2.8735 123.395 2.85728 123.39C2.84918 123.388 2.84288 123.386 2.8384 123.384C2.83616 123.384 2.83416 123.383 2.83304 123.383C2.83151 123.382 2.83043 123.382 3.99989 119.557C5.16934 115.731 5.16918 115.731 5.16947 115.731C5.17017 115.732 5.17091 115.732 5.17232 115.732C5.17513 115.733 5.17975 115.735 5.18618 115.737C5.19904 115.74 5.21911 115.747 5.24632 115.755C5.30074 115.771 5.3837 115.796 5.49453 115.83C5.71621 115.896 6.04939 115.995 6.48881 116.124C7.36768 116.383 8.67139 116.76 10.3579 117.234C13.7311 118.18 18.634 119.51 24.7301 121.035C36.9267 124.087 53.8773 127.914 72.895 131.02C111.154 137.27 156.95 140.453 189.394 129.223L192.01 136.783Z"
-                                    fill="#FDC5C5"
+                                    d="M259.176 2.7313C259.876 0.636228 262.143 -0.494151 264.238 0.20653C266.333 0.907212 267.463 3.17362 266.762 5.2687L259.176 2.7313ZM177.46 115.489L178.72 119.286L178.72 119.286L177.46 115.489ZM0.457288 97.5628C-0.568351 95.6062 0.186357 93.1886 2.14298 92.1629L34.0279 75.4492C35.9846 74.4235 38.4022 75.1783 39.4278 77.1349C40.4534 79.0915 39.6987 81.5091 37.7421 82.5347L9.39992 97.3914L24.2566 125.734C25.2822 127.69 24.5275 130.108 22.5709 131.133C20.6143 132.159 18.1967 131.404 17.171 129.448L0.457288 97.5628ZM262.969 4C266.762 5.2687 266.762 5.26991 266.762 5.27149C266.761 5.27249 266.761 5.27442 266.76 5.27641C266.759 5.28041 266.757 5.28583 266.754 5.29265C266.75 5.3063 266.743 5.32559 266.735 5.35044C266.718 5.40015 266.694 5.47209 266.662 5.56562C266.597 5.75269 266.503 6.02615 266.378 6.38084C266.129 7.09019 265.759 8.12466 265.27 9.44286C264.293 12.0789 262.84 15.8519 260.927 20.4306C257.105 29.5811 251.431 41.9843 244.031 54.9743C229.383 80.6862 207.371 109.778 178.72 119.286L176.2 111.693C201.792 103.2 222.534 76.5467 237.08 51.0143C244.276 38.382 249.81 26.2882 253.545 17.347C255.411 12.8799 256.825 9.20857 257.769 6.66161C258.241 5.38833 258.596 4.39668 258.831 3.72778C258.949 3.39335 259.036 3.13966 259.094 2.97185C259.122 2.88795 259.144 2.82552 259.157 2.78521C259.164 2.76506 259.169 2.75044 259.172 2.74142C259.174 2.73692 259.175 2.73382 259.175 2.73213C259.176 2.73128 259.176 2.73108 259.176 2.73065C259.176 2.7308 259.176 2.7313 262.969 4ZM178.72 119.286C164.668 123.949 146.562 124.897 127.627 123.863C108.614 122.825 88.4034 119.764 69.9538 116.164C51.4918 112.562 34.7189 108.406 22.5647 105.151C16.4854 103.523 11.5561 102.119 8.14234 101.121C6.43534 100.622 5.10691 100.225 4.20273 99.9508C3.75063 99.8139 3.40456 99.708 3.17023 99.636C3.05306 99.5999 2.96382 99.5723 2.90323 99.5535C2.87293 99.5442 2.8498 99.537 2.83392 99.532C2.82597 99.5296 2.81984 99.5277 2.81554 99.5263C2.81338 99.5256 2.81152 99.5251 2.81045 99.5247C2.80904 99.5243 2.8081 99.524 4.00006 95.7057C5.19202 91.8874 5.19199 91.8874 5.19242 91.8876C5.19317 91.8878 5.19406 91.8881 5.19556 91.8885C5.19856 91.8895 5.20338 91.891 5.21001 91.893C5.22327 91.8972 5.24376 91.9035 5.27139 91.9121C5.32666 91.9292 5.4105 91.9551 5.5222 91.9895C5.7456 92.0582 6.08043 92.1607 6.52099 92.2941C7.40213 92.5609 8.70608 92.9513 10.3873 93.4428C13.7499 94.4259 18.6202 95.8129 24.634 97.4232C36.6659 100.645 53.2529 104.755 71.4858 108.312C89.7312 111.872 109.55 114.864 128.063 115.875C146.655 116.89 163.572 115.884 176.2 111.693L178.72 119.286Z"
+                                    fill="url(#paint0_linear_209_1669)"
                                 />
+                                <defs>
+                                    <linearGradient id="paint0_linear_209_1669" x1="3.74955" y1="94.5563" x2="263.13" y2="2.93058" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#FDC5C5" />
+                                        <stop offset="0.9375" stop-color="#2B2B2B" />
+                                    </linearGradient>
+                                </defs>
                             </svg>
                         </div>
                     </div>
