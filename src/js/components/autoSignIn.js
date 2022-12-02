@@ -1,4 +1,4 @@
-import { BASE_URL, LOGIN_ENDPOINT } from '../settings/api';
+// import { BASE_URL, LOGIN_ENDPOINT } from '../settings/api';
 
 function autoSignIn() {
     const signInUser = {
@@ -23,5 +23,4 @@ function autoSignIn() {
     signIn();
 }
 autoSignIn();
-
-export { autoSignIn };
+// export { autoSignIn };

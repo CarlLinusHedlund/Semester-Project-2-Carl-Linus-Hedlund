@@ -1,6 +1,5 @@
 import { emailValidation, passwordValidation } from './components/validate';
 import { BASE_URL, REGISTER_ENDPOINT, LOGIN_ENDPOINT } from './settings/api';
-import { autoSignIn } from './components/autoSignIn';
 
 const form = document.getElementById('signupForm');
 console.log(BASE_URL + REGISTER_ENDPOINT);
@@ -115,9 +114,6 @@ form.addEventListener('submit', function () {
                 const data = await response.json();
                 console.log(data);
                 if (response.ok) {
-                    const validEmail = email.value;
-                    const validPassword = password.value;
-                    autoSignIn(validEmail, validPassword);
                     // location.href = "/index.html"
                 } else {
                     formErrorMessage.classList.remove('hidden');
