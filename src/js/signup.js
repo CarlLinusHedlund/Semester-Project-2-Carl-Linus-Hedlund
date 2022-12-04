@@ -71,7 +71,6 @@ form.addEventListener('submit', function () {
 
     if (passwordConfirm.value.trim().length >= 8) {
         passwordConfirmError.classList.add('hidden');
-        // passwordMatchError.classList.add('hidden')
         passwordConfirmIs = true;
     } else {
         passwordConfirmError.classList.remove('hidden');
