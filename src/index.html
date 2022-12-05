@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Home | INTER</title>
         <script type="module" src="./js/main.js" defer></script>
+        <script type="module" src="./js/script.js" defer></script>
         <script type="module" src="./js/components/headerHandler.js" defer></script>
         <script type="module" src="./js/components/dropdownNav.js" defer></script>
         <script type="module" src="./js/components/autoType.js" defer></script>
@@ -83,7 +84,7 @@
             </section>
             <section class="mx-auto max-w-5xl flex flex-col py-20 gap-7 items-center">
                 <h2 class="text-2xl">RECENT LISTINGS</h2>
-                <div class="card-container grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 px-4 gap-4 sm:gap-6 w-full">
+                <div id="productCardWrapper" class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 px-4 gap-4 sm:gap-6 w-full">
                     <div class="bg-white h-[350px] rounded-xl productCardShadow overflow-hidden md:hover:scale-110 duration-150">
                         <div class="w-full h-[49%] bg-black productCardImgShadow">
                             <img class="object-cover w-full h-full" src="./img/png/shoe-img.jpg" alt="shoe image" />
@@ -138,7 +139,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="flex max-w-[220px] bg-white h-8 mx-3 mt-4 justify-between items-center rounded-md productCardBtnShadow" href="#">
+                        <a class="flex bg-white h-8 mx-3 mt-4 justify-between items-center rounded-md productCardBtnShadow" href="#">
                             <p class="text-[10px] ml-2 text-primaryBlack-0">PLACE A NEW BID</p>
                             <svg class="mr-2" width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
