@@ -19,10 +19,10 @@ function saveToStorage(key, value) {
 
 function getUserName() {
     const user = getFromStorage(userKey);
-    if (userKey) {
+    if (user) {
         return user;
     } else {
-        return null;
+        return false;
     }
 }
 
@@ -31,7 +31,7 @@ function getFromStorage(key) {
     if (value) {
         return value;
     } else {
-        return [];
+        return false;
     }
 }
 
