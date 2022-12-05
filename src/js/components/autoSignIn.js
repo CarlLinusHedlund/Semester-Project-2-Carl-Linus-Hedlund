@@ -1,26 +1,32 @@
-// import { BASE_URL, LOGIN_ENDPOINT } from '../settings/api';
+import { BASE_URL, LOGIN_ENDPOINT } from '../settings/api';
+import { saveToken, saveUser } from '../utils/storage';
 
-function autoSignIn() {
-    const signInUser = {
-        email: 'carltestv10',
-        password: 'carltestv10',
+async function autoSignIn(emailVal, passwordVal) {
+    const userData = {
+        email: emailVal,
+        password: passwordVal,
     };
-    async function signIn() {
-        try {
-            const signInResponse = await fetch(BASE_URL + LOGIN_ENDPOINT, {
-                method: 'POST',
-                headers: {
-                    Content: 'application/json',
-                },
-                body: JSON.stringify(signInUser),
-            });
-            const signInData = await signInResponse.json();
-            console.log(signInData);
-        } catch (e) {
-            console.log("Couldn't fetch data");
+    try {
+        const response = await fetch(BASE_URL + LOGIN_ENDPOINT, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userData),
+        });
+        if (response.ok) {
+            const data = await response.json();
+            saveToken(data.accessToken);
+            await saveUser(data.name);
+            window.location.href = '/';
+        } else {
+            const err = await response.json();
+            const errors = err.errors;
+            console.log(errors);
         }
+    } catch (err) {
+        console.log('autoLogIn failed');
+        window.location.href = '/signIn.html';
     }
-    signIn();
 }
-autoSignIn();
-// export { autoSignIn };
+export { autoSignIn };
