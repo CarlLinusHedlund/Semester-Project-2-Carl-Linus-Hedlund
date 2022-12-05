@@ -20,7 +20,7 @@ function saveToStorage(key, value) {
 function getUserName() {
     const user = getFromStorage(userKey);
     if (userKey) {
-        return user.name;
+        return user;
     } else {
         return null;
     }
@@ -35,4 +35,4 @@ function getFromStorage(key) {
     }
 }
 
-export { saveToken, saveUser };
+export { saveToken, saveUser, getUserName };

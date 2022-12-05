@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Home | INTER</title>
         <script type="module" src="./js/main.js" defer></script>
+        <script type="module" src="./js/components/headerHandler.js" defer></script>
         <script type="module" src="./js/components/dropdownNav.js" defer></script>
         <script type="module" src="./js/components/autoType.js" defer></script>
     </head>
@@ -15,8 +16,8 @@
                 <div class="header-inner max-w-5xl bg-black w-full mx-2 flex justify-between items-center">
                     <div class="text-white font-black text-2xl"><a href="#">INTER</a></div>
                     <div class="flex gap-6 items-center">
-                        <div class="flex gap-5 items-center">
-                            <li id="makeList-nav" class="text-white list-none font-light text-sm"><a href="#">MAKE A LIST</a></li>
+                        <div id="navBar" class="flex gap-5 items-center">
+                            <li class="text-white list-none font-light text-sm"><a href="#">MAKE A LIST</a></li>
                             <li class="text-white list-none font-light text-sm"><a href="#">BROWSE</a></li>
                         </div>
                         <div class="flex items-center bg-white rounded-lg px-2 h-6 w-48 justify-between">
@@ -28,7 +29,7 @@
                                 />
                             </svg>
                         </div>
-                        <div class="flex gap-3">
+                        <div id="profileNav" class="flex gap-3">
                             <a href="./signIn.html" class="h-6 w-20 text-white text-xs font-light flex justify-center items-center border border-white rounded-lg">Sign in</a>
                             <a href="./signup.html" class="h-6 w-20 rounded-lg bg-white text-xs text-black font-light flex justify-center items-center">Sign Up</a>
                         </div>

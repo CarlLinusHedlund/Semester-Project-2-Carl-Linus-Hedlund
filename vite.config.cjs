@@ -5,6 +5,7 @@ export default {
     resolve: {
         main: resolve(__dirname, 'index.html'),
         signup: resolve(__dirname, 'signup.html'),
+        signIN: resolve(__dirname, 'signIn.html'),
     },
     server: {
         port: 8080,
