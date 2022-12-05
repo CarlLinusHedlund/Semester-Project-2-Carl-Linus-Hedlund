@@ -56,11 +56,12 @@ if (signInForm) {
 
         if (formIsValid) {
             console.log('Validation success');
-            const userData = {
-                email: email.value,
-                password: password.value,
-            };
-            async function signInUser() {
+            signInUser(email.value, password.value);
+            async function signInUser(emailVal, passwordVal) {
+                const userData = {
+                    email: emailVal,
+                    password: passwordVal,
+                };
                 try {
                     const response = await fetch(BASE_URL + LOGIN_ENDPOINT, {
                         method: 'POST',
@@ -74,10 +75,6 @@ if (signInForm) {
                         saveToken(data.accessToken);
                         console.log(data);
                         console.log(data.accessToken);
-                        const userObj = {
-                            name: data.name,
-                            email: data.email,
-                        };
                         await saveUser(data.name);
                         window.location.href = '/';
                     } else {
@@ -95,7 +92,6 @@ if (signInForm) {
                     formErrorMessage.innerText = `${errorMessage.message}`;
                 }
             }
-            signInUser();
         }
     });
 } else {

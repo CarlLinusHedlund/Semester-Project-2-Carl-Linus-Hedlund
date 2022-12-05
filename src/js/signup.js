@@ -1,5 +1,6 @@
 import { emailValidation, passwordValidation } from './components/validate';
 import { BASE_URL, REGISTER_ENDPOINT, LOGIN_ENDPOINT } from './settings/api';
+import { autoSignIn } from './components/autoSignIn';
 
 const form = document.getElementById('signupForm');
 console.log(BASE_URL + REGISTER_ENDPOINT);
@@ -95,13 +96,13 @@ form.addEventListener('submit', function () {
 
     let formIsValid = nameIs && emailIs && emailIsValid && passwordIs && passwordConfirmIs && passwordMatchIs;
     if (formIsValid) {
-        const signUpUserData = {
-            name: name.value,
-            email: email.value,
-            password: password.value,
-            avatar: '',
-        };
         async function signUpUser() {
+            const signUpUserData = {
+                name: name.value,
+                email: email.value,
+                password: password.value,
+                avatar: '',
+            };
             try {
                 const response = await fetch(BASE_URL + REGISTER_ENDPOINT, {
                     method: 'POST',
@@ -113,7 +114,10 @@ form.addEventListener('submit', function () {
                 const data = await response.json();
                 console.log(data);
                 if (response.ok) {
-                    // location.href = "/index.html"
+                    console.log(email.value);
+                    console.log(password.value);
+                    await autoSignIn(email.value, password.value);
+                    //location.href = "/index.html"
                 } else {
                     formErrorMessage.classList.remove('hidden');
                     formErrorMessage.innerText = `Message: ${data.errors[i].message}`;
