@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=K2D:wght@100;200;300;400;500;600&family=NTR&family=Oswald:wght@200;300;400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Rowdies:wght@300;400&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -26,7 +24,7 @@
     box-shadow: 0px 6px 42px rgba(0, 0, 0, 0.08), 0px 0.751293px 5.25905px rgba(0, 0, 0, 0.04);
 }
 
-.productCardImgShadow {
+.inputShadow {
     filter: drop-shadow(0px 9px 49px rgba(0, 0, 0, 0.113)) drop-shadow(0px 1.12694px 6.13556px rgba(0, 0, 0, 0.415));
 }
 
@@ -40,6 +38,21 @@
         0px 0.399006px 6.6501px rgba(0, 0, 0, 0.0242336), 0px 0.166035px 2.76726px rgba(0, 0, 0, 0.0168687);
 }
 
-input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0px 1000px #f8f8f8 inset;
+.skeleton {
+    animation: skeleton-loading 1s linear infinite alternate;
 }
+
+@keyframes skeleton-loading {
+    0% {
+        background-color: #f8f8f8;
+    }
+    100% {
+        background-color: #f3f3f3;
+    }
+}
+
+.textShadowWhite {
+    text-shadow: 0px -22px 92px rgba(255, 255, 255, 0.59), 0px -4.91399px 20.5494px rgba(255, 255, 255, 0.351703), 0px -1.46302px 6.11809px rgba(255, 255, 255, 0.238297);
+}
+
+/* @import url('https://fonts.googleapis.com/css2?family=K2D:wght@100;200;300;400;500;600&family=NTR&family=Oswald:wght@200;300;400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Rowdies:wght@300;400&display=swap'); */
