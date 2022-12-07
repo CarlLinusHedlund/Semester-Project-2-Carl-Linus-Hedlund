@@ -21,18 +21,16 @@ function getUserName() {
     const user = getFromStorage(userKey);
     if (user) {
         return user;
-    } else {
-        return false;
     }
+    return false;
 }
 
 function getFromStorage(key) {
     const value = localStorage.getItem(key);
     if (value) {
         return value;
-    } else {
-        return false;
     }
+    return false;
 }
 
 export { saveToken, saveUser, getUserName };

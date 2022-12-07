@@ -10,7 +10,7 @@
         "prettier": "npx prettier --write .",
         "pretty quick": "pretty quick",
         "lint": "npx eslint .",
-        "lint fix": "npx eslint --fix ."
+        "lint-fix": "npx eslint --fix ."
     },
     "devDependencies": {
         "autoprefixer": "^10.4.13",

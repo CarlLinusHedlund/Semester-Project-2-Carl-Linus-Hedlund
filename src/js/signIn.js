@@ -14,7 +14,7 @@ const signInForm = document.getElementById('logInForm');
 const formErrorMessage = document.getElementById('formErrorMessage');
 
 if (signInForm) {
-    signInForm.addEventListener('submit', function (event) {
+    signInForm.addEventListener('submit', (event) => {
         event.preventDefault();
 
         let emailIs = false;
@@ -52,7 +52,7 @@ if (signInForm) {
             passwordError.classList.remove('hidden');
         }
 
-        let formIsValid = emailIs && emailIsValid && passwordIs;
+        const formIsValid = emailIs && emailIsValid && passwordIs;
 
         if (formIsValid) {
             console.log('Validation success');
@@ -79,7 +79,7 @@ if (signInForm) {
                         window.location.href = '/';
                     } else {
                         const err = await response.json();
-                        const errors = err.errors;
+                        const { errors } = err;
                         var errorMessage = '';
                         errors.forEach((error) => {
                             errorMessage = error;
