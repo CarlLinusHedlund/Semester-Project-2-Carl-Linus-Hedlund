@@ -1,3 +1,5 @@
+import { countdown } from './components/countdown';
+
 // Card Container
 const card = document.createElement('div');
 card.className = 'bg-white h-[380px] min-w-[200px] rounded-xl productCardShadow overflow-hidden md:hover:scale-110 duration-150';
@@ -53,7 +55,7 @@ const timeLeftHeader = document.createElement('p');
 timeLeftHeader.className = 'text-[9px] text-gray-300';
 timeLeftHeader.innerText = 'TIME LEFT';
 const timeLeft = document.createElement('p');
-timeLeft.className = 'text-primaryBlack-0 text-xs font-medium';
+timeLeft.className = 'text-primaryBlack-0 text-xs font-medium timeLeft';
 
 highestBidContainer.append(highestBidHeader, hBid);
 timeLeftContainer.append(timeLeftHeader, timeLeft);

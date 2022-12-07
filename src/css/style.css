@@ -38,8 +38,12 @@
         0px 0.399006px 6.6501px rgba(0, 0, 0, 0.0242336), 0px 0.166035px 2.76726px rgba(0, 0, 0, 0.0168687);
 }
 
+.inputFilterShadow {
+    box-shadow: 0px 45px 80px rgba(0, 0, 0, 0.04), 0px 13.5662px 24.1177px rgba(0, 0, 0, 0.0260636), 0px 5.6347px 10.0172px rgba(0, 0, 0, 0.02), 0px 2.03796px 3.62304px rgba(0, 0, 0, 0.0139364);
+}
+
 .skeleton {
-    animation: skeleton-loading 1s linear infinite alternate;
+    animation: skeleton-loading 2s linear infinite alternate;
 }
 
 @keyframes skeleton-loading {
