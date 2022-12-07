@@ -21,7 +21,7 @@ const passwordMatchError = document.getElementById('passwordMatchError');
 
 const formErrorMessage = document.getElementById('formErrorMessage');
 
-form.addEventListener('submit', function () {
+form.addEventListener('submit', () => {
     event.preventDefault();
     let nameIs = false;
     let emailIs = false;
@@ -80,10 +80,10 @@ form.addEventListener('submit', function () {
 
     passwordMatchIs = passwordValidation(password.value, passwordConfirm.value);
 
-    if (passwordMatchIs == true) {
+    if (passwordMatchIs === true) {
         passwordMatchError.classList.add('hidden');
     } else {
-        if (passwordConfirmIs == true) {
+        if (passwordConfirmIs === true) {
             passwordMatchError.classList.add('-bottom-4');
             passwordMatchError.classList.remove('-bottom-8');
         } else {
@@ -94,7 +94,7 @@ form.addEventListener('submit', function () {
         passwordMatchError.innerText = "Password doesn't match. Please try again!";
     }
 
-    let formIsValid = nameIs && emailIs && emailIsValid && passwordIs && passwordConfirmIs && passwordMatchIs;
+    const formIsValid = nameIs && emailIs && emailIsValid && passwordIs && passwordConfirmIs && passwordMatchIs;
     if (formIsValid) {
         async function signUpUser() {
             const signUpUserData = {
@@ -117,7 +117,7 @@ form.addEventListener('submit', function () {
                     console.log(email.value);
                     console.log(password.value);
                     await autoSignIn(email.value, password.value);
-                    //location.href = "/index.html"
+                    // location.href = "/index.html"
                 } else {
                     formErrorMessage.classList.remove('hidden');
                     formErrorMessage.innerText = `Message: ${data.errors[i].message}`;

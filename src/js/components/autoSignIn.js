@@ -21,7 +21,7 @@ async function autoSignIn(emailVal, passwordVal) {
             window.location.href = '/';
         } else {
             const err = await response.json();
-            const errors = err.errors;
+            const { errors } = err;
             console.log(errors);
         }
     } catch (err) {
@@ -29,4 +29,4 @@ async function autoSignIn(emailVal, passwordVal) {
         window.location.href = '/signIn.html';
     }
 }
-export { autoSignIn };
+export default { autoSignIn };

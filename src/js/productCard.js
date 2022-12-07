@@ -1,6 +1,6 @@
-//Card Container
+// Card Container
 const card = document.createElement('div');
-card.className = 'bg-white h-[380px] rounded-xl productCardShadow overflow-hidden md:hover:scale-110 duration-150';
+card.className = 'bg-white h-[380px] min-w-[200px] rounded-xl productCardShadow overflow-hidden md:hover:scale-110 duration-150';
 
 const imgContainer = document.createElement('div');
 imgContainer.className = 'imgContainer w-full h-[49%] bg-black relative';
@@ -13,7 +13,7 @@ imgContainer.append(imgLink, cardImg);
 const cardInfoContainer = document.createElement('div');
 cardInfoContainer.className = 'flex flex-col w-full';
 
-//Place a bid BTN
+// Place a bid BTN
 const linkContainer = document.createElement('a');
 linkContainer.className = 'bottom-2 flex bg-white h-8 mx-3 mt-4 justify-between items-center rounded-md productCardBtnShadow';
 const linkText = document.createElement('p');
@@ -24,7 +24,7 @@ linkSvg.className = 'mr-2';
 linkSvg.data = '/img/svg/arrow.svg';
 linkContainer.append(linkText, linkSvg);
 
-//title and author
+// title and author
 const cardTitleAndAuthor = document.createElement('div');
 cardTitleAndAuthor.className = 'flex flex-nowrap flex-col py-2 mx-3 border-b-[1px] border-gray-300 solid';
 const cardTitle = document.createElement('h2');
@@ -37,13 +37,13 @@ cardAuthorSpan.className = 'uppercase text-primaryBlack-0';
 cardAuthor.append(cardAuthorSpan);
 cardTitleAndAuthor.append(cardAuthor, cardTitle);
 
-//HighestBid & time left
+// HighestBid & time left
 const productInfo = document.createElement('div');
 productInfo.className = 'flex px-3 py-4 gap-6';
 const highestBidContainer = document.createElement('div');
 highestBidContainer.className = 'flex flex-col';
 const highestBidHeader = document.createElement('p');
-highestBidHeader.className = 'text-[9px] text-gray-300';
+highestBidHeader.className = 'text-[9px] text-gray-300 whitespace-nowrap';
 highestBidHeader.innerText = 'CURRENT BID';
 const hBid = document.createElement('p');
 hBid.className = 'text-primaryBlack-0 text-xs font-medium';
@@ -71,5 +71,4 @@ function newCard(imgURL, title, time, highestBid, author, link) {
     imgLink.href = `${link}`;
     return card;
 }
-
 export { newCard };

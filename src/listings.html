@@ -68,42 +68,47 @@
                     <img class="md:max-w-[300px] mx-auto" src="./img/png/christmas-banner.png" alt="christmas-banner" srcset="" />
                 </div>
             </section>
-            <div class="flex flex-col">
-                <div class="filterSection py-10 px-4 max-w-5xl mx-auto flex flex-col gap-7">
-                    <div class="w-full px-3 flex items-center bg-[#F2F2F2] rounded-xl max-w-2xl">
-                        <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M15.75 5.625H22.5M15.75 9H19.125M23.625 12.9375C23.625 18.8438 18.8438 23.625 12.9375 23.625C7.03125 23.625 2.25 18.8438 2.25 12.9375C2.25 7.03125 7.03125 2.25 12.9375 2.25M24.75 24.75L22.5 22.5"
-                                stroke="#C1C1C1"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
+            <div class="flex flex-col md:flex-row max-w-5xl mx-auto gap-4">
+                <div class="flex flex-col md:w-[320px] md:border-r border-gray-200 pt-20 pr-4">
+                    <div class="pr-4 pl-2 flex flex-col gap-4 w-full">
+                        <div>
+                            <p id="totalItems" class="text-sm text-gray-400">Found 0 items</p>
+                        </div>
+                        <div class="w-full flex items-center bg-white rounded-lg max-w-2xl border border-primaryGray-0 pr-2">
+                            <input
+                                id="listingSearch"
+                                placeholder="Search For Products"
+                                class="placeholder:text-gray-200 w-full h-10 rounded-xl text-xs text-black bg-white pl-2 outline-none"
+                                type="search"
                             />
-                        </svg>
-                        <input id="listingSearch" placeholder="Search For Products" class="w-full h-14 rounded-xl bg-[#F2F2F2] px-4 outline-none" type="search" />
-                    </div>
-                    <div class="flex flex-col gap-5 md:flex-row md:justify-start">
-                        <select name="createdOrTitle" id="sort" class="bg-primaryWhite-0 h-10 w-64 px-2 rounded-lg">
-                            <option selected value="created">Created</option>
-                            <option value="title">Title</option>
-                        </select>
-                        <select name="descOrAsc" id="order" class="bg-primaryWhite-0 h-10 w-64 px-2 rounded-lg">
-                            <option selected value="desc">Descending</option>
-                            <option value="asc">Ascending</option>
-                        </select>
-                        <select name="activeOrEnded" id="active" class="bg-primaryWhite-0 h-10 w-64 px-2 rounded-lg">
-                            <option selected value="active">Active</option>
-                            <option value="ended">Ended</option>
-                        </select>
-                    </div>
-                    <div>
-                        <p id="totalItems" class="">Found 0 items</p>
+                            <svg width="20" height="20" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M15.75 5.625H22.5M15.75 9H19.125M23.625 12.9375C23.625 18.8438 18.8438 23.625 12.9375 23.625C7.03125 23.625 2.25 18.8438 2.25 12.9375C2.25 7.03125 7.03125 2.25 12.9375 2.25M24.75 24.75L22.5 22.5"
+                                    stroke="#C1C1C1"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </div>
+                        <div class="flex flex-col gap-10 md:justify-start w-full md:flex-col mt-10">
+                            <select name="createdOrTitle" id="sort" class="bg-primaryWhite-0 h-10 w-full px-2 rounded-lg md:h-8 md:text-[10px] uppercase">
+                                <option selected value="created">Created</option>
+                                <option value="title">Title</option>
+                            </select>
+                            <select name="descOrAsc" id="order" class="bg-primaryWhite-0 h-10 w-full px-2 rounded-lg md:h-8 md:text-[10px] uppercase">
+                                <option selected value="desc">Descending</option>
+                                <option value="asc">Ascending</option>
+                            </select>
+                            <select name="activeOrEnded" id="active" class="bg-primaryWhite-0 h-10 w-full px-2 rounded-lg md:h-8 md:text-[10px] uppercase">
+                                <option selected value="active">Active</option>
+                                <option value="ended">Ended</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
+                <div id="productCardWrapper" class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full mb-32 px-6 pt-20"></div>
             </div>
-            <section class="max-w-5xl mx-auto">
-                <div id="productCardWrapper" class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 px-2 gap-6 sm:gap-6 w-full mb-32"></div>
-            </section>
         </main>
         <footer class="bg-black w-full">
             <div class="mx-auto max-w-5xl h-full flex justify-between items-center py-5 border-b-[1px] border-gray-500 px-2">

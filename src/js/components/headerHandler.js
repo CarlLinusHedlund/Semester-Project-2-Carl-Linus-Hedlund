@@ -1,4 +1,5 @@
 import { getUserName } from '../utils/storage';
+
 const navContainer = document.getElementById('navContainer');
 const userLinks = document.getElementById('userLinks');
 
@@ -19,7 +20,7 @@ profileNavName.innerHTML = `<p class="text-primaryWhite-0 text-[15px] tracking-w
 
 const profileImg = document.createElement('div');
 profileImg.className = 'h-8 w-8 bg-gray-100 rounded-full flex justify-center items-center';
-profileImg.innerHTML = `<img class="rounded-full h-5 w-4" src="/img/png/Profile.png"/>`;
+profileImg.innerHTML = '<img class="rounded-full h-5 w-4" src="/img/png/Profile.png"/>';
 
 const profileNav = document.createElement('div');
 profileNav.className = 'flex gap-2';

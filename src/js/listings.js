@@ -50,7 +50,7 @@ active.onchange = function () {
 const productCardWrapper = document.getElementById('productCardWrapper');
 async function getProducts() {
     try {
-        let LISTING_URL_ENDPOINT = `/api/v1/auction/listings?sort=${sortValue}&sortOrder=${sortOrder}&limit=12&offset=1&_active=${activeValue}&_seller=true&_bids=true`;
+        const LISTING_URL_ENDPOINT = `/api/v1/auction/listings?sort=${sortValue}&sortOrder=${sortOrder}&limit=12&offset=1&_active=${activeValue}&_seller=true&_bids=true`;
         const response = await fetch(BASE_URL + LISTING_URL_ENDPOINT);
         console.log(LISTING_URL_ENDPOINT);
         const responseJSON = await response.json();
