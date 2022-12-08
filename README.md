@@ -1,72 +1,40 @@
-# Semester-Project-2-Carl-Linus-Hedlund
+# Auction Site 💰
 
-Goal
-To take the skills learned over the past three semesters and create an auction website.
+Welcome to our auction site, where you can bid on a variety of items and earn credits by creating listings. 🤑
 
-Brief
-An auction site is looking to launch a website where users can add items to be bid on and bid on items other users have put up for auction.
+To get started, sign up for an account and you'll receive 1000 credits to use for bidding. To create a listing, simply click on the "Create Listing" button and provide the necessary details about the item you want to sell. 📝
 
-When a new user joins the website, they are given 1000 credits to use on the site. They can get credits by selling items and use credit by buying items. Non-registered users can search through the listings, but only registered users can make bids on listings.
+## Running the program locally
 
-Requirements
-All API functionality is managed by an existing application. This project only covers the front-end application for the API.
+To run this program locally, you'll need to have [vite](https://github.com/vitejs/vite) installed. If you already have it installed, simply navigate to the project directory and run the following command:
 
-API
-The API you are using for this project can be found under Auction EndPoints in the Noroff API documentation.
+```nodejs
+$ vite
+```
 
-Resources
-API Swagger
+This will start the development server and you can access the auction site at `http://localhost:3000`. 💻
 
-User stories
-The client has specified the following requirements in the form of User Stories:
+Alternatively, if you have npm installed, you can run the program by using the following command:
 
-A user with a stud.noroff.no email may register
-A registered user may login
-A registered user may logout
-A registered user may update their avatar
-A registered user may create a Listing with a title, deadline date, media and description
-A registered user may add a Bid to another user’s Listing
-A registered user may view the last highest Bid made on a Listing
-A registered user may view their total credit
-A registered user may get credit by getting a successful Bid on their Listing
-A registered user may use credit to make a Bid on another user’s Listing
-A user (registered or not) may search through Listings
-Technical restrictions
-The company CTO has set the following technical restrictions:
+```nodejs
+$ npm run dev
+```
 
-Must use an approved CSS Framework
-Must be hosted on an approved Static Host
-Must use an approved Design Application
-Must use an approved Planning Application
-Required links
-The Product Owner has requested links to the following:
 
-A Gantt chart for project timing
-A design prototype
-A style guide
-A kanban project board
-A repository link
-A hosted application demo link
-Approved resources
-This list covers libraries and services that have been vetted by the company and approved for use.
+This will also start the development server and you can access the auction site at `http://localhost:3000`. Please note that this command assumes that you have a `dev` script defined in your `package.json` file. The `dev` script should specify the command to start the development server, which is typically `vite`. 📦
 
-CSS frameworks
-Bootstrap (>5)
-Tailwind (>3)
-MUI (>5)
-Hosting services
-GitHub Pages
-Netlify
-Design applications
-Adobe XD
-Figma
-Sketch
-Planning applications
-Trello
-GitHub Projects
-Delivery
-Include the required links in the Moodle delivery window using this template format.
+Here is an example `package.json` file with a `dev` script that uses `vite`:
 
-All final changes must be merged into the default branch main or master. Other branches will not be checked.
 
-Ensure that the readme.md file describes your project thoroughly, including how to setup and run the project locally and any special instructions for testers.
+```nodejs
+{ 
+"scripts": {
+"dev": "vite"
+}
+}
+```
+
+
+With this setup, you can simply run `npm run dev` to start the development server.
+
+🎉 Have fun bidding and selling on our auction site! 🎉
