@@ -1,7 +1,7 @@
 const countdown = (time) => {
     const countDate = Date.parse(time);
     const now = new Date().getTime();
-    let gap = countDate - now;
+    const gap = countDate - now;
     const second = 1000;
     const minute = second * 60;
     const hour = minute * 60;
@@ -14,4 +14,4 @@ const countdown = (time) => {
     return countdownString;
 };
 
-export { countdown };
+export default countdown;
