@@ -29,7 +29,7 @@
 }
 
 .imgShadow {
-    filter: drop-shadow(8px 6px 20px rgba(1, 1, 1, 0.54)) drop-shadow(3px 0.751293px 2.50431px rgba(1, 1, 1, 0.27));
+    box-shadow: 0px 6px 20px rgba(1, 1, 1, 0.54), 0px 0.751293px 2.50431px rgba(1, 1, 1, 0.27);
 }
 
 .productCardBtnShadow {
@@ -47,8 +47,7 @@
 }
 
 .btnAnimation:hover {
-    filter: drop-shadow(0px 0px 36px rgba(209, 189, 118, 0.38)) drop-shadow(0px 0px 15.0399px rgba(209, 189, 118, 0.273165)) drop-shadow(0px 0px 8.04107px rgba(209, 189, 118, 0.226521))
-        drop-shadow(0px 0px 4.50776px rgba(209, 189, 118, 0.19)) drop-shadow(0px 0px 2.39404px rgba(209, 189, 118, 0.153479)) drop-shadow(0px 0px 0.996212px rgba(209, 189, 118, 0.106835));
+    filter: drop-shadow(0px 0px 71px rgba(209, 189, 118, 0.17)) drop-shadow(0px 0px 8.8903px rgba(209, 189, 118, 0.085));
 }
 
 @keyframes skeleton-loading {

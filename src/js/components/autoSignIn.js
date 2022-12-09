@@ -29,4 +29,4 @@ async function autoSignIn(emailVal, passwordVal) {
         window.location.href = '/signIn.html';
     }
 }
-export default { autoSignIn };
+export default autoSignIn;

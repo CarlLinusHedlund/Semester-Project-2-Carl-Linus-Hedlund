@@ -1,6 +1,6 @@
 import { emailValidation, passwordValidation } from './components/validate';
-import { BASE_URL, REGISTER_ENDPOINT, LOGIN_ENDPOINT } from './settings/api';
-import { autoSignIn } from './components/autoSignIn';
+import { BASE_URL, REGISTER_ENDPOINT } from './settings/api';
+import autoSignIn from './components/autoSignIn';
 
 const form = document.getElementById('signupForm');
 console.log(BASE_URL + REGISTER_ENDPOINT);
@@ -22,6 +22,7 @@ const passwordMatchError = document.getElementById('passwordMatchError');
 const formErrorMessage = document.getElementById('formErrorMessage');
 
 form.addEventListener('submit', () => {
+    // eslint-disable-next-line no-restricted-globals
     event.preventDefault();
     let nameIs = false;
     let emailIs = false;
@@ -63,8 +64,6 @@ form.addEventListener('submit', () => {
     if (password.value.trim().length >= 8) {
         passwordError.classList.add('hidden');
         passwordIs = true;
-        if ((passwordMatchIs = true)) {
-        }
     } else {
         passwordError.classList.remove('hidden');
         passwordError.innerText = 'Contain minimum 8 characters';
@@ -94,8 +93,12 @@ form.addEventListener('submit', () => {
         passwordMatchError.innerText = "Password doesn't match. Please try again!";
     }
 
+    let errorMessage;
+
+    // eslint-disable-next-line max-len
     const formIsValid = nameIs && emailIs && emailIsValid && passwordIs && passwordConfirmIs && passwordMatchIs;
     if (formIsValid) {
+        // eslint-disable-next-line no-inner-declarations
         async function signUpUser() {
             const signUpUserData = {
                 name: name.value,
@@ -111,18 +114,21 @@ form.addEventListener('submit', () => {
                     },
                     body: JSON.stringify(signUpUserData),
                 });
-                const data = await response.json();
-                console.log(data);
                 if (response.ok) {
-                    console.log(email.value);
-                    console.log(password.value);
                     await autoSignIn(email.value, password.value);
-                    // location.href = "/index.html"
                 } else {
-                    formErrorMessage.classList.remove('hidden');
-                    formErrorMessage.innerText = `Message: ${data.errors[i].message}`;
+                    const err = await response.json();
+                    const { errors } = err;
+                    errorMessage = '';
+                    errors.forEach((error) => {
+                        errorMessage = error;
+                    });
+                    throw new Error(errorMessage);
                 }
-            } catch (e) {}
+            } catch (e) {
+                formErrorMessage.classList.remove('hidden');
+                formErrorMessage.innerText = `Message: ${Error.errors[0].message}`;
+            }
         }
         signUpUser();
     } else {

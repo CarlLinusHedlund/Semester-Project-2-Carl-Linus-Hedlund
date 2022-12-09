@@ -1,4 +1,4 @@
-import countdown from './components/countdown';
+import { countdown } from './components/countdown';
 import newCard from './productCard';
 import { BASE_URL } from './settings/api';
 
@@ -30,14 +30,7 @@ async function getProducts() {
             } else {
                 bids = 'No Bids';
             }
-            const card = newCard(
-                data[i].media[0] ? data[i].media[0] : 'img/png/mediaNotAvailable.png',
-                data[i].title,
-                data[i].endsAt,
-                bids,
-                data[i].seller.name,
-                `/specificProduct.html?id=${data[i].id}`
-            );
+            const card = newCard(data[i].media[0] ? data[i].media[0] : 'img/png/noMediaFound.png', data[i].title, data[i].endsAt, bids, data[i].seller.name, `/specificProduct.html?id=${data[i].id}`);
 
             const test = card.querySelector('.timeLeft');
             test.innerText = countdown(data[i].endsAt);

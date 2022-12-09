@@ -52,11 +52,12 @@ if (signInForm) {
             passwordError.classList.remove('hidden');
         }
 
+        let errorMessage;
         const formIsValid = emailIs && emailIsValid && passwordIs;
 
         if (formIsValid) {
             console.log('Validation success');
-            signInUser(email.value, password.value);
+            // eslint-disable-next-line no-inner-declarations
             async function signInUser(emailVal, passwordVal) {
                 const userData = {
                     email: emailVal,
@@ -73,18 +74,15 @@ if (signInForm) {
                     if (response.ok) {
                         const data = await response.json();
                         saveToken(data.accessToken);
-                        console.log(data);
-                        console.log(data.accessToken);
-                        await saveUser(data.name);
+                        saveUser(data.name);
                         window.location.href = '/';
                     } else {
                         const err = await response.json();
                         const { errors } = err;
-                        var errorMessage = '';
+                        errorMessage = '';
                         errors.forEach((error) => {
                             errorMessage = error;
                         });
-                        console.log(errorMessage);
                         throw new Error(errorMessage);
                     }
                 } catch (err) {
@@ -92,8 +90,10 @@ if (signInForm) {
                     formErrorMessage.innerText = `${errorMessage.message}`;
                 }
             }
+            signInUser(email.value, password.value);
         }
     });
 } else {
+    // eslint-disable-next-line no-console
     console.log('VALIDATION FAILED');
 }

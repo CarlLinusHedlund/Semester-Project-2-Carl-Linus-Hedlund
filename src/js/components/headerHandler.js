@@ -4,13 +4,17 @@ const navContainer = document.getElementById('navContainer');
 const userLinks = document.getElementById('userLinks');
 
 const navBarLinks = document.getElementById('navBarLinks');
-// console.log(navBarLinks);
 const user = getUserName();
 
 const makeListLink = document.createElement('a');
-makeListLink.className = 'text-white list-none font-light text-sm';
+makeListLink.className = 'text-white list-none font-normal text-base duration-200 hover:scale-110 uppercase';
 makeListLink.innerText = 'MAKE A LIST';
 makeListLink.href = '/makeList.html';
+
+const dashboard = document.createElement('a');
+dashboard.className = 'text-white list-none font-normal text-base duration-200 hover:scale-110 uppercase';
+dashboard.innerText = 'Dashboard';
+dashboard.href = 'dashboard/';
 
 const profileNavName = document.createElement('div');
 profileNavName.className = 'flex flex-col';
@@ -29,6 +33,7 @@ profileNav.append(profileImg);
 
 function responsiveHeader() {
     if (user) {
+        navBarLinks.prepend(dashboard);
         navBarLinks.prepend(makeListLink);
         userLinks.innerHTML = '';
         navContainer.append(profileNav);
