@@ -19,7 +19,7 @@ module.exports = {
                 primaryBlack: ['#2B2B2B'],
                 primaryWhite: ['#F8F8F8'],
                 primaryGray: ['#C5C5C5'],
-                primaryGold: ['#D1BD76'],
+                primaryGold: ['#B6934F'],
             },
         },
     },

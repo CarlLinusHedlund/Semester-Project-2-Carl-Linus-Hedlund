@@ -14,21 +14,34 @@ const title = document.getElementById('productName');
 const description = document.getElementById('description');
 const time = document.getElementById('timeValue');
 const highestBid = document.getElementById('highestBid');
-const img = document.getElementById('mainImg');
-const childImgs = document.getElementById('childImgContainer');
 const tableBody = document.getElementById('tableBody');
 const productId = document.getElementById('productId');
+const productAuthor = document.getElementById('productAuthor');
+const sliderContainer = document.getElementById('sliderContainer');
+
+// HTML elements for placing bid
+const submitBid = document.getElementById('submitBid');
+const bidAmount = document.getElementById('bidAmount');
 
 // HTML elements for Error/success handling
 const globalErrorMessage = document.getElementById('globalErrorMessage');
 const globalErrorList = document.getElementById('errorMessageList');
 const bidErrorMessage = document.getElementById('bidErrorMessage');
 const bidSuccessMessage = document.getElementById('bidSuccessMessage');
-console.log(bidSuccessMessage);
 
-// HTML elements for placing bid
-const submitBid = document.getElementById('submitBid');
-const bidAmount = document.getElementById('bidAmount');
+// Variables for the table element. Try to do this later
+// let tableRow = document.createElement('tr');
+// let tableHead = document.createElement('th');
+// let tableData = document.createElement('td');
+// let tableDataTwo = document.createElement('td');
+
+// eslint-disable-next-line max-len
+// tableRow.className = 'bg-white border-b light:bg-gray-800 light:border-gray-700 hover:bg-gray-50 light:hover:bg-gray-600 h-14';
+// tableHead.scope = 'row';
+// tableHead.className = 'py-4 px-6 font-medium text-gray-900 whitespace-nowrap light:text-white';
+// tableData.className = 'py-4 px-6 text-xs sm:text-sm';
+// tableDataTwo.className = 'py-4 px-6 text-xs sm:text-sm';
+// tableRow.append(tableHead, tableData, tableDataTwo);
 
 let errorMessage;
 let errorBidMessage;
@@ -38,6 +51,7 @@ async function getProduct() {
         const response = await fetch(url);
         if (response.ok) {
             const productData = await response.json();
+            console.log(productData);
             const productDataMedia = productData.media;
             const productsDataBids = productData.bids;
             if (productsDataBids.length === 0) {
@@ -50,33 +64,31 @@ async function getProduct() {
                     if (productsDataBids.length > 0) {
                         const bidsLength = productsDataBids.length - 1;
                         bid = productsDataBids[bidsLength].amount;
+                        highestBid.innerText = bid;
                     }
-                    highestBid.innerText = bid;
                     tableBody.innerHTML += `
             <tr class="bg-white border-b light:bg-gray-800 light:border-gray-700 hover:bg-gray-50 light:hover:bg-gray-600 h-14">
                 <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap light:text-white">${productsDataBids[i].bidderName}</th>
-                <td class="py-4 px-6 whitespace-nowrap text-xs sm:text-sm">${countdown(productsDataBids[i].created)}</td>
+                <td class="py-4 px-6 whitespace-nowrap text-xs sm:text-sm">${productsDataBids[i].created}</td>
                 <td class="py-4 px-6 text-xs sm:text-sm">${productsDataBids[i].amount}</td>
             </tr>`;
                 }
             }
             for (let i = 0; i < productDataMedia.length; i += 1) {
-                // eslint-disable-next-line quotes
-                childImgs.innerHTML += `<div class="h-16 w-16 rounded-sm">
-        <img src="${productDataMedia[i]}" alt="${productData.title}" class="w-full h-full rounded-lg cursor-pointer hover:scale-105" />
+                sliderContainer.innerHTML += `<div class="swiper-slide w-full h-full bg-cover bg-center rounded-lg" style="background-image: url(${productDataMedia[i]}">
         </div>`;
             }
-            img.src = productData.media[0] ? productData.media[0] : 'img/png/noMediaFound.png';
-            img.alt = productData.title;
-            title.innerText = productData.title;
             description.innerText = productData.description;
             time.innerHTML = countdown(productData.endsAt);
             setInterval(() => {
                 time.innerHTML = countdown(productData.endsAt);
             }, 1000);
+            title.innerText = productData.title;
             productId.innerText = productData.title;
+            productAuthor.innerText = productData.seller.name;
         } else {
             const err = await response.json();
+            console.log(err);
             const { errors } = err;
             errors.forEach((error) => {
                 errorMessage = error;
@@ -112,10 +124,10 @@ async function makeBid() {
             console.log(bidValid);
             bidErrorMessage.classList.add = '';
             bidSuccessMessage.className =
-                'text-xs absolute -bottom-20 text-primaryBlack-0 h-16 w-[90%] bg-green-300 rounded-lg py-2 px-4 flex flex-col justify-center items-center duration-100 opacity-1';
+                'mx-auto text-xs absolute -bottom-20 text-primaryBlack-0 h-16 w-full bg-green-200 rounded-lg py-2 px-4 flex flex-col justify-center items-center duration-100 opacity-1';
+            bidSuccessMessage.innerText = 'Bid Succeed! Please refresh site to se update.';
         } else {
             const bidErr = await response.json();
-            console.log(bidErr);
             const { errors } = bidErr;
             errors.forEach((bidError) => {
                 errorBidMessage = bidError;
@@ -123,8 +135,8 @@ async function makeBid() {
             throw new Error(errorBidMessage);
         }
     } catch (error) {
-        console.log(error);
-        bidErrorMessage.className = 'text-xs absolute -bottom-20 text-primaryBlack-0 h-16 w-[90%] bg-red-400 rounded-lg py-2 px-4 flex flex-col justify-center items-center duration-100 opacity-1';
+        bidErrorMessage.className =
+            'mx-auto text-xs absolute -bottom-28 text-primaryBlack-0 h-20 md:16 w-full bg-red-400 rounded-lg py-2 px-4 flex flex-col justify-center items-center duration-100 opacity-1';
         bidErrorMessage.innerText = `Error Message: ${errorBidMessage.message}`;
         bidSuccessMessage.className = '';
     }
@@ -135,7 +147,8 @@ submitBid.addEventListener('click', (event) => {
     if (signedIn) {
         makeBid();
     } else {
-        bidErrorMessage.className = 'text-xs absolute -bottom-20 text-primaryBlack-0 h-16 w-full bg-red-400 rounded-lg py-2 px-4 flex flex-col justify-center items-center duration-100 opacity-1';
+        bidErrorMessage.className =
+            'text-xs absolute -bottom-20 text-primaryBlack-0 h-20 md:16 w-full bg-red-400 rounded-lg py-2 px-4 flex flex-col justify-center items-center duration-100 opacity-1';
         bidErrorMessage.innerText = 'Not signed in! Please sign in to make a bid.';
         bidErrorMessage.innerHTML += '<a href="/signin/signIn.html" class="pt-2 uppercase underline">sign in here</a>';
     }
