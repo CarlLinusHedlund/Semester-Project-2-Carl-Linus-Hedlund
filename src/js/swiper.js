@@ -8,18 +8,18 @@ import 'swiper/css/bundle';
 // init Swiper:
 // eslint-disable-next-line no-unused-vars
 const swiper = new Swiper('.swiper', {
-    // Optional parameters
-    direction: 'horizontal',
-    loop: true,
+  // Optional parameters
+  direction: 'horizontal',
+  loop: true,
 
-    // If we need pagination
-    pagination: {
-        el: '.swiper-pagination',
-    },
+  // If we need pagination
+  pagination: {
+    el: '.swiper-pagination',
+  },
 
-    // Navigation arrows
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
 });
