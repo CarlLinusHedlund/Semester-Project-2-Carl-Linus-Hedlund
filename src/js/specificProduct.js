@@ -29,20 +29,6 @@ const globalErrorList = document.getElementById('errorMessageList');
 const bidErrorMessage = document.getElementById('bidErrorMessage');
 const bidSuccessMessage = document.getElementById('bidSuccessMessage');
 
-// Variables for the table element. Try to do this later
-// let tableRow = document.createElement('tr');
-// let tableHead = document.createElement('th');
-// let tableData = document.createElement('td');
-// let tableDataTwo = document.createElement('td');
-
-// eslint-disable-next-line max-len
-// tableRow.className = 'bg-white border-b light:bg-gray-800 light:border-gray-700 hover:bg-gray-50 light:hover:bg-gray-600 h-14';
-// tableHead.scope = 'row';
-// tableHead.className = 'py-4 px-6 font-medium text-gray-900 whitespace-nowrap light:text-white';
-// tableData.className = 'py-4 px-6 text-xs sm:text-sm';
-// tableDataTwo.className = 'py-4 px-6 text-xs sm:text-sm';
-// tableRow.append(tableHead, tableData, tableDataTwo);
-
 let errorMessage;
 let errorBidMessage;
 let bid;
@@ -54,6 +40,16 @@ async function getProduct() {
             console.log(productData);
             const productDataMedia = productData.media;
             const productsDataBids = productData.bids;
+            const dataBidsReversed = productsDataBids.reverse();
+            dataBidsReversed.forEach((bid) => {
+                tableBody.innerHTML += `
+                <tr class="bg-white border-b light:bg-gray-800 light:border-gray-700 hover:bg-gray-50 light:hover:bg-gray-600 h-14">
+                <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap light:text-white">${bid.bidderName}</th>
+                <td class="py-4 px-6 whitespace-nowrap text-xs sm:text-sm">${bid.created}</td>
+                <td class="py-4 px-6 text-xs sm:text-sm">${bid.amount}</td>
+                </tr>`;
+            });
+
             if (productsDataBids.length === 0) {
                 bid = 'No Bids';
                 highestBid.innerText = bid;
@@ -66,17 +62,11 @@ async function getProduct() {
                         bid = productsDataBids[bidsLength].amount;
                         highestBid.innerText = bid;
                     }
-                    tableBody.innerHTML += `
-            <tr class="bg-white border-b light:bg-gray-800 light:border-gray-700 hover:bg-gray-50 light:hover:bg-gray-600 h-14">
-                <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap light:text-white">${productsDataBids[i].bidderName}</th>
-                <td class="py-4 px-6 whitespace-nowrap text-xs sm:text-sm">${productsDataBids[i].created}</td>
-                <td class="py-4 px-6 text-xs sm:text-sm">${productsDataBids[i].amount}</td>
-            </tr>`;
                 }
             }
             for (let i = 0; i < productDataMedia.length; i += 1) {
-                sliderContainer.innerHTML += `<div class="swiper-slide w-full h-full bg-cover bg-center rounded-lg" style="background-image: url(${productDataMedia[i]}">
-        </div>`;
+                sliderContainer.innerHTML += `<div class="swiper-slide w-full h-full bg-cover bg-center rounded-lg" style="background-image: url(${productDataMedia[i]})">
+                    </div>`;
             }
             description.innerText = productData.description;
             time.innerHTML = countdown(productData.endsAt);
@@ -122,9 +112,9 @@ async function makeBid() {
         if (response.ok) {
             const bidValid = await response.json();
             console.log(bidValid);
-            bidErrorMessage.classList.add = '';
+            bidErrorMessage.className = 'hidden';
             bidSuccessMessage.className =
-                'mx-auto text-xs absolute -bottom-20 text-primaryBlack-0 h-16 w-full bg-green-200 rounded-lg py-2 px-4 flex flex-col justify-center items-center duration-100 opacity-1';
+                'mx-auto text-xs absolute -bottom-28 text-primaryBlack-0 h-20 w-full bg-green-200 rounded-lg py-2 px-4 flex flex-col justify-center items-center duration-100 opacity-1';
             bidSuccessMessage.innerText = 'Bid Succeed! Please refresh site to se update.';
         } else {
             const bidErr = await response.json();
@@ -138,7 +128,7 @@ async function makeBid() {
         bidErrorMessage.className =
             'mx-auto text-xs absolute -bottom-28 text-primaryBlack-0 h-20 md:16 w-full bg-red-400 rounded-lg py-2 px-4 flex flex-col justify-center items-center duration-100 opacity-1';
         bidErrorMessage.innerText = `Error Message: ${errorBidMessage.message}`;
-        bidSuccessMessage.className = '';
+        bidSuccessMessage.className = 'hidden';
     }
 }
 

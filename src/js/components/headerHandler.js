@@ -2,24 +2,25 @@ import { getUserName } from '../utils/storage';
 
 const navContainer = document.getElementById('navContainer');
 const userLinks = document.getElementById('userLinks');
+const browse = document.getElementById('browse');
 
 const navBarLinks = document.getElementById('navBarLinks');
 const user = getUserName();
 
 const makeListLink = document.createElement('a');
-makeListLink.className = 'text-white list-none font-normal text-base duration-200 hover:scale-110 uppercase';
+makeListLink.className = 'text-white list-none font-bold text-sm duration-200 hover:scale-110 uppercase';
 makeListLink.innerText = 'MAKE A LIST';
-makeListLink.href = '/makeList.html';
+makeListLink.href = 'dashboard/makeAList.html';
 
 const dashboard = document.createElement('a');
-dashboard.className = 'text-white list-none font-normal text-base duration-200 hover:scale-110 uppercase';
+dashboard.className = 'text-white list-none font-bold text-sm duration-200 hover:scale-110 uppercase';
 dashboard.innerText = 'Dashboard';
-dashboard.href = 'dashboard/';
+dashboard.href = 'dashboard/dashboard.html';
 
 const profileNavName = document.createElement('div');
 profileNavName.className = 'flex flex-col';
 profileNavName.innerHTML = `<p class="text-primaryWhite-0 text-[15px] tracking-wider">${user}</p>
- <a href="/profile.html" class="font-light text-primaryWhite-0 text-[10px]">View Profile</a>
+ <a href="/dashboard/dashboard.html" class="font-light text-primaryWhite-0 text-[10px]">View Profile</a>
 </div>`;
 
 const profileImg = document.createElement('div');
@@ -30,6 +31,19 @@ const profileNav = document.createElement('div');
 profileNav.className = 'flex gap-2';
 profileNav.prepend(profileNavName);
 profileNav.append(profileImg);
+
+if (window.location.href.includes('/dashboard/')) {
+    makeListLink.href = 'makeAList.html';
+    browse.href = '../listings.html';
+    dashboard.href = '#';
+}
+
+const dashboardLink = document.querySelectorAll('.dashboardLink');
+dashboardLink.forEach((element) => {
+    if (window.location.href.includes(element.href)) {
+        element.classList.add('active');
+    }
+});
 
 function responsiveHeader() {
     if (user) {

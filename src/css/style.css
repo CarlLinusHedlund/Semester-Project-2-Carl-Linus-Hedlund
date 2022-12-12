@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+.cardActive {
+    @apply flex;
+}
+
+.cardHidden {
+    @apply hidden;
+}
+
+.active {
+    @apply text-2xl font-extrabold text-primaryBlack-0 headerShadow;
+}
+
 .activeDropdown {
     @apply h-screen;
 }
@@ -50,17 +62,6 @@
     filter: drop-shadow(0px 0px 71px rgba(209, 189, 118, 0.17)) drop-shadow(0px 0px 8.8903px rgba(209, 189, 118, 0.085));
 }
 
-@keyframes skeleton-loading {
-    0% {
-        background-color: #f8f8f8;
-    }
-    100% {
-        background-color: #f3f3f3;
-    }
-}
-
 .textShadowWhite {
     text-shadow: 0px -22px 92px rgba(255, 255, 255, 0.59), 0px -4.91399px 20.5494px rgba(255, 255, 255, 0.351703), 0px -1.46302px 6.11809px rgba(255, 255, 255, 0.238297);
 }
-
-/* @import url('https://fonts.googleapis.com/css2?family=K2D:wght@100;200;300;400;500;600&family=NTR&family=Oswald:wght@200;300;400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Rowdies:wght@300;400&display=swap'); */

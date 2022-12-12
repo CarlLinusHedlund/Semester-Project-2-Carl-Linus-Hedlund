@@ -11,3 +11,9 @@ if (window.location.href.includes('/signup/') || window.location.href.includes('
         window.location.href = '/';
     }
 }
+
+const signOut = document.getElementById('signOut');
+signOut.addEventListener('click', () => {
+    localStorage.clear();
+    window.location.reload();
+});

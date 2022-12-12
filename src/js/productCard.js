@@ -63,6 +63,7 @@ card.append(imgContainer, cardInfoContainer, linkContainer);
 
 function newCard(imgURL, title, time, highestBid, author, link) {
     cardImg.src = imgURL;
+    console.log(cardImg.src);
     cardAuthorSpan.innerText = author;
     timeLeft.innerText = time;
     cardTitle.innerText = title;
