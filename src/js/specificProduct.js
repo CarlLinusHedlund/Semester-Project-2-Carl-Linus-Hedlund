@@ -40,13 +40,13 @@ async function getProduct() {
             console.log(productData);
             const productDataMedia = productData.media;
             const productsDataBids = productData.bids;
-            const dataBidsReversed = productsDataBids.reverse();
-            dataBidsReversed.forEach((bid) => {
+            const dataSort = productData.bids.sort((a, b) => b.amount - a.amount);
+            dataSort.forEach((bids) => {
                 tableBody.innerHTML += `
                 <tr class="bg-white border-b light:bg-gray-800 light:border-gray-700 hover:bg-gray-50 light:hover:bg-gray-600 h-14">
-                <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap light:text-white">${bid.bidderName}</th>
-                <td class="py-4 px-6 whitespace-nowrap text-xs sm:text-sm">${bid.created}</td>
-                <td class="py-4 px-6 text-xs sm:text-sm">${bid.amount}</td>
+                <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap light:text-white">${bids.bidderName}</th>
+                <td class="py-4 px-6 whitespace-nowrap text-xs sm:text-sm">${bids.created}</td>
+                <td class="py-4 px-6 text-xs sm:text-sm">${bids.amount}</td>
                 </tr>`;
             });
 

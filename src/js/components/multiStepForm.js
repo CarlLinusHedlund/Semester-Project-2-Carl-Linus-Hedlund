@@ -1,79 +1,149 @@
+import { DateTime } from 'luxon';
+import { BASE_URL } from '../settings/api';
+import { getToken } from '../utils/storage';
+
 // Selects the Html elements
-const errorMessage = document.getElementById('errorMessage');
 const title = document.getElementById('title');
-const nextBtns = document.querySelectorAll('[data-next]');
-const prevBtns = document.querySelectorAll('[data-prev]');
-const steps = document.querySelectorAll('[data-step]');
-const url = document.getElementById('url');
-const fallbackImage = document.getElementById('fallbackImage');
+const url = document.getElementById('urlInput');
+const testImg = document.getElementById('testImg');
+const previewImgContainer = document.getElementById('previewImgContainer');
+const date = document.getElementById('date');
+const applyImg = document.getElementById('applyImg');
+const publish = document.getElementById('publish');
+const description = document.getElementById('description');
+const applyTags = document.getElementById('tagsInput');
+const showTags = document.getElementById('showTags');
 
-steps.forEach((step) => {
-    console.log(step.dataset.step);
-});
-let isValid;
-const previewImg = document.getElementById('previewImg');
-url.addEventListener('change', (e) => {
-    previewImg.src = e.target.value;
-    previewImg.onload = function () {
-        fallbackImage.classList.add('hidden');
-        previewImg.classList.remove('hidden');
-        console.log('jeg er true');
-        // nextBtns[1].disabled = false;
-        isValid = true;
+// Error handling elements
+const errorMessageTitle = document.getElementById('errorMessageTitle');
+const errorMessageTags = document.getElementById('errorMessageTags');
+const errorMessageImg = document.getElementById('errorMessageImg');
+const errorMessageDate = document.getElementById('errorMessageDate');
+
+const now = DateTime.now().toFormat('yyyy-MM-dd');
+const hourPlus = DateTime.now().plus({ minutes: 5 }).toFormat('HH:mm');
+// const hourNow = DateTime.now().toFormat('HH:mm');
+// const maxDay = DateTime.now().plus({ days: 10 }).toFormat('yyyy-MM-dd');
+
+date.min = `${now}T${hourPlus}`;
+// date.max = `${maxDay}T${hourNow}`;
+
+applyImg.addEventListener('click', (e) => {
+    e.preventDefault();
+    const previewImg = [...document.querySelectorAll('.previewImg')];
+    const urlValue = url.value;
+    const zIndex = previewImg.length * 10;
+
+    testImg.src = '';
+    testImg.src = urlValue;
+    testImg.onload = function () {
+        errorMessageImg.classList.add('hidden');
+        errorMessageImg.innerText = '';
+        if (previewImg.length < 5) {
+            previewImgContainer.innerHTML += `
+      <img src="${urlValue}" class="previewImg absolute h-full w-full opacity-1 z-${zIndex} rounded-lg">
+
+      `;
+        } else {
+            errorMessageImg.classList.remove('hidden');
+            errorMessageImg.innerText = 'Maximum 5 images.';
+        }
     };
-    previewImg.onerror = function () {
-        console.log('jeg er false');
-        previewImg.classList.add('hidden');
-        fallbackImage.classList.add('block');
-        fallbackImage.classList.remove('hidden');
-        // nextBtns[1].disabled = true;
-        isValid = false;
+    testImg.onerror = function () {
+        errorMessageImg.classList.remove('hidden');
+        errorMessageImg.innerText = 'Please make sure you added a valid url. PLease try again!';
     };
-    return isValid;
 });
 
-nextBtns.forEach((nextBtn) => {
-    console.log(nextBtn);
-    nextBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const titleValue = title.value.length;
-        if (nextBtn.dataset.next === '1') {
-            if (titleValue > 5) {
-                errorMessage.innerText = '';
-                errorMessage.className = 'w-full h-0 bg-red-400 hidden justify-center items-center rounded-md text-[10px] duration-500';
-                steps[0].classList.toggle('cardActive');
-                steps[1].classList.toggle('cardActive');
-            } else {
-                errorMessage.innerText = 'Please enter title with 5 characters or more to proceed';
-                errorMessage.className = 'w-full h-10 bg-red-400 flex justify-center items-center rounded-md text-[10px] duration-400';
-            }
-        }
-        if (nextBtn.dataset.next === '2') {
-            if (isValid) {
-                errorMessage.innerText = '';
-                errorMessage.className = 'w-full h-0 bg-red-400 hidden justify-center items-center rounded-md text-[10px] duration-500';
-                steps[1].classList.toggle('cardActive');
-                steps[2].classList.toggle('cardActive');
-            } else {
-                isValid = false;
-                errorMessage.innerText = 'Need to add an valid Url, please try again!';
-                errorMessage.className = 'w-full h-10 bg-red-400 flex justify-center items-center rounded-md text-[10px] duration-400';
-            }
-        }
+let substrings = [];
+
+applyTags.addEventListener('change', (event) => {
+    const string = event.target.value;
+    substrings = string.split(',').map((str) => str.trim());
+    showTags.innerHTML = '';
+    substrings.forEach((strings) => {
+        showTags.innerHTML += `<div class="w-fit h-fit bg-gray-100 px-3 py-1 rounded-lg text-xs">${strings}</div>`;
     });
 });
 
-prevBtns.forEach((prevBtn) => {
-    console.log(prevBtn);
-    prevBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (prevBtn.dataset.prev === '1') {
-            steps[0].classList.toggle('cardActive');
-            steps[1].classList.toggle('cardActive');
+async function makeAList(body) {
+    console.log('publish!!!');
+    try {
+        const response = await fetch(`${BASE_URL}/api/v1/auction/listings`, {
+            method: 'POST',
+            headers: {
+                Authorization: `bearer ${getToken}`,
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify(body),
+        });
+        console.log(getToken);
+        console.log('Hello', response);
+        if (response.ok) {
+            const reponseData = await response.json();
+            console.log(reponseData);
+        } else {
+            const responseError = await response.json();
+            console.log(responseError);
         }
-        if (prevBtn.dataset.prev === '2') {
-            steps[1].classList.toggle('cardActive');
-            steps[2].classList.toggle('cardActive');
-        }
-    });
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+publish.addEventListener('click', (e) => {
+    e.preventDefault();
+    let titleValid = false;
+    let imgValid = false;
+    let dateValid = false;
+
+    if (title.value.trim().length === 0) {
+        errorMessageTitle.classList.remove('hidden');
+        errorMessageTitle.innerText = 'Required input field';
+        titleValid = false;
+    } else if (title.value.trim().length <= 3) {
+        errorMessageTitle.classList.remove('hidden');
+        errorMessageTitle.innerText = 'At least 4 characters';
+        titleValid = false;
+    } else {
+        errorMessageTitle.classList.add('hidden');
+        titleValid = true;
+    }
+
+    if (date.value === '') {
+        dateValid = false;
+        errorMessageDate.classList.remove('hidden');
+        errorMessageDate.innerText = 'Please add valid date.';
+        console.log('add date');
+    } else {
+        dateValid = true;
+    }
+    const previewImg = document.querySelectorAll('.previewImg');
+    const srcArray = Array.from(previewImg).map((img) => img.src);
+    if (srcArray.length === 0) {
+        imgValid = false;
+    } else if (srcArray.length >= 1) {
+        imgValid = true;
+    }
+
+    console.log(imgValid);
+    console.log(titleValid);
+    console.log(dateValid);
+
+    const formIsValid = imgValid && titleValid && dateValid;
+
+    if (formIsValid) {
+        console.log('Validation succeed');
+        const makeAListBody = {
+            title: title.value,
+            description: description.value,
+            tags: substrings,
+            media: srcArray,
+            endsAt: date.value,
+        };
+        console.log(makeAListBody);
+        makeAList(makeAListBody);
+    } else {
+        console.log('Make a list Validation Failed!!');
+    }
 });
