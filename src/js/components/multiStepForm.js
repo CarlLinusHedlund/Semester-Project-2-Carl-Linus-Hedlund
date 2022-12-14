@@ -19,14 +19,12 @@ const errorMessageTitle = document.getElementById('errorMessageTitle');
 const errorMessageTags = document.getElementById('errorMessageTags');
 const errorMessageImg = document.getElementById('errorMessageImg');
 const errorMessageDate = document.getElementById('errorMessageDate');
+const errorMessageGlobal = document.getElementById('globalMessageBanner')
 
 const now = DateTime.now().toFormat('yyyy-MM-dd');
 const hourPlus = DateTime.now().plus({ minutes: 5 }).toFormat('HH:mm');
-// const hourNow = DateTime.now().toFormat('HH:mm');
-// const maxDay = DateTime.now().plus({ days: 10 }).toFormat('yyyy-MM-dd');
 
 date.min = `${now}T${hourPlus}`;
-// date.max = `${maxDay}T${hourNow}`;
 
 applyImg.addEventListener('click', (e) => {
     e.preventDefault();
@@ -40,10 +38,7 @@ applyImg.addEventListener('click', (e) => {
         errorMessageImg.classList.add('hidden');
         errorMessageImg.innerText = '';
         if (previewImg.length < 5) {
-            previewImgContainer.innerHTML += `
-      <img src="${urlValue}" class="previewImg absolute h-full w-full opacity-1 z-${zIndex} rounded-lg">
-
-      `;
+            previewImgContainer.innerHTML += `<img src="${urlValue}" class="previewImg absolute h-full w-full opacity-1 z-${zIndex} rounded-lg">`;
         } else {
             errorMessageImg.classList.remove('hidden');
             errorMessageImg.innerText = 'Maximum 5 images.';
@@ -66,28 +61,36 @@ applyTags.addEventListener('change', (event) => {
     });
 });
 
+let errorMessage;
 async function makeAList(body) {
     console.log('publish!!!');
     try {
-        const response = await fetch(`${BASE_URL}/api/v1/auction/listings`, {
+        const response = await fetch (`${BASE_URL}/api/v1/auction/listings?_bids=true&sort=created&sortOrder=desc`, {
             method: 'POST',
             headers: {
-                Authorization: `bearer ${getToken}`,
+                Authorization: `Bearer ${getToken()}`,
                 'Content-type': 'application/json',
             },
             body: JSON.stringify(body),
         });
-        console.log(getToken);
-        console.log('Hello', response);
         if (response.ok) {
-            const reponseData = await response.json();
-            console.log(reponseData);
+            const responseData = await response.json();
+            console.log(responseData);
+            errorMessageGlobal.innerText = 'Your list is now published!'
+            errorMessageGlobal.className = 'w-72 h-10 flex justify-center items-center text-xs bg-green-200 rounded-md';
         } else {
-            const responseError = await response.json();
-            console.log(responseError);
+            const err = await response.json();
+            const { errors } = err;
+            errorMessage = '';
+            errors.forEach((error) => {
+            errorMessage = error;
+            });
+            throw new Error(errorMessage);
         }
     } catch (error) {
         console.log(error);
+        errorMessageGlobal.className = 'w-72 h-10 flex justify-center items-center text-xs bg-red-300 rounded-md';
+        errorMessageGlobal.innerText = `${errorMessage.message}`;
     }
 }
 
@@ -134,6 +137,7 @@ publish.addEventListener('click', (e) => {
 
     if (formIsValid) {
         console.log('Validation succeed');
+        console.log(date.value);
         const makeAListBody = {
             title: title.value,
             description: description.value,
