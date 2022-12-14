@@ -1,5 +1,5 @@
 import { countdown } from './components/countdown';
-import { newCard } from './productCard';
+import newCard from './productCard';
 import { BASE_URL } from './settings/api';
 
 const sort = document.getElementById('sort');
@@ -14,55 +14,6 @@ let activeValue = 'true';
 let inputIndexValue = 12;
 let offsetValue = 0;
 
-sort.onchange = function () {
-    if (sort.value === 'created') {
-        sortValue = sort.value;
-        productCardWrapper.innerHTML = '';
-        getProducts();
-    } else {
-        sortValue = sort.value;
-        productCardWrapper.innerHTML = '';
-        getProducts();
-    }
-};
-
-order.onchange = function () {
-    if (order.value === 'desc') {
-        sortOrder = 'desc';
-        productCardWrapper.innerHTML = '';
-        getProducts();
-    } else {
-        sortOrder = 'asc';
-        productCardWrapper.innerHTML = '';
-        getProducts();
-    }
-};
-
-active.onchange = function () {
-    if (active.value === 'true') {
-        activeValue = 'true';
-        productCardWrapper.innerHTML = '';
-        getProducts();
-    } else {
-        activeValue = 'false';
-        productCardWrapper.innerHTML = '';
-        getProducts();
-    }
-};
-
-let seeMoreHandler = function () {
-    offsetValue = offsetValue + inputIndexValue;
-    getProducts();
-};
-
-inputIndex.onchange = function () {
-    inputIndexValue = Number(inputIndex.value);
-    productCardWrapper.innerHTML = '';
-    getProducts();
-};
-
-seeMoreBtn.addEventListener('click', seeMoreHandler);
-
 const productCardWrapper = document.getElementById('productCardWrapper');
 async function getProducts() {
     try {
@@ -73,15 +24,14 @@ async function getProducts() {
         const totalItems = data.length;
         totalItemsP.innerText = `${totalItems}`;
         for (let i = 0; i < data.length; i += 1) {
-            data[i];
-            const card = newCard(
-                data[i].media[0] ? data[i].media[0] : 'img/png/mediaNotAvailable.png',
-                data[i].title,
-                data[i].endsAt,
-                300,
-                data[i].seller.name,
-                `/specificProduct.html?id=${data[i].id}`
-            );
+            let bids;
+            if (data[i].bids.length > 0) {
+                bids = data[i].bids[data[i].bids.length - 1].amount;
+            } else {
+                bids = 'No Bids';
+            }
+            const card = newCard(data[i].media[0] ? data[i].media[0] : 'img/png/noMediaFound.png', data[i].title, data[i].endsAt, bids, data[i].seller.name, `/specificProduct.html?id=${data[i].id}`);
+
             const test = card.querySelector('.timeLeft');
             test.innerText = countdown(data[i].endsAt);
             productCardWrapper.innerHTML += card.outerHTML;
@@ -94,7 +44,56 @@ async function getProducts() {
             seeMoreBtn.className = 'hidden';
         }
     } catch (error) {
-        console.log(error);
+        console.log('hello');
     }
 }
 getProducts();
+
+sort.onchange = function sortFunction() {
+    if (sort.value === 'created') {
+        sortValue = sort.value;
+        productCardWrapper.innerHTML = '';
+        getProducts();
+    } else {
+        sortValue = sort.value;
+        productCardWrapper.innerHTML = '';
+        getProducts();
+    }
+};
+
+order.onchange = function orderFunction() {
+    if (order.value === 'desc') {
+        sortOrder = 'desc';
+        productCardWrapper.innerHTML = '';
+        getProducts();
+    } else {
+        sortOrder = 'asc';
+        productCardWrapper.innerHTML = '';
+        getProducts();
+    }
+};
+
+active.onchange = function activeFunction() {
+    if (active.value === 'true') {
+        activeValue = 'true';
+        productCardWrapper.innerHTML = '';
+        getProducts();
+    } else {
+        activeValue = 'false';
+        productCardWrapper.innerHTML = '';
+        getProducts();
+    }
+};
+
+const seeMoreHandler = function seeMoreFunction() {
+    offsetValue += inputIndexValue;
+    getProducts();
+};
+
+inputIndex.onchange = function showCards() {
+    inputIndexValue = Number(inputIndex.value);
+    productCardWrapper.innerHTML = '';
+    getProducts();
+};
+
+seeMoreBtn.addEventListener('click', seeMoreHandler);

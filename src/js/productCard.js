@@ -1,8 +1,6 @@
-import { countdown } from './components/countdown';
-
 // Card Container
 const card = document.createElement('div');
-card.className = 'bg-white h-[380px] min-w-[200px] rounded-xl productCardShadow overflow-hidden md:hover:scale-110 duration-150';
+card.className = 'bg-white h-[350px] min-w-[200px] rounded-xl productCardShadow overflow-hidden md:hover:scale-110 duration-150 w-full';
 
 const imgContainer = document.createElement('div');
 imgContainer.className = 'imgContainer w-full h-[49%] bg-black relative';
@@ -17,9 +15,9 @@ cardInfoContainer.className = 'flex flex-col w-full';
 
 // Place a bid BTN
 const linkContainer = document.createElement('a');
-linkContainer.className = 'bottom-2 flex bg-white h-8 mx-3 mt-4 justify-between items-center rounded-md productCardBtnShadow';
+linkContainer.className = 'flex bg-white h-8 mx-3 px-2 mt-4 justify-between items-center rounded-md productCardBtnShadow';
 const linkText = document.createElement('p');
-linkText.className = 'text-[10px] ml-2 text-primaryBlack-0';
+linkText.className = 'text-[10px] ml-2 text-primaryBlack-0 whitespace-nowrap';
 linkText.innerText = 'PLACE A NEW BID';
 const linkSvg = document.createElement('object');
 linkSvg.className = 'mr-2';
@@ -28,9 +26,9 @@ linkContainer.append(linkText, linkSvg);
 
 // title and author
 const cardTitleAndAuthor = document.createElement('div');
-cardTitleAndAuthor.className = 'flex flex-nowrap flex-col py-2 mx-3 border-b-[1px] border-gray-300 solid';
+cardTitleAndAuthor.className = 'flex flex-col py-2 mx-3 border-b-[1px] border-gray-300 solid';
 const cardTitle = document.createElement('h2');
-cardTitle.className = 'text-primaryBlack-0 text-[13px] font-semibold overflow-hidden flex flex-nowrap max-h-5';
+cardTitle.className = 'text-primaryBlack-0 text-[13px] font-semibold max-h-5 w-full truncate pr-4';
 const cardAuthor = document.createElement('p');
 cardAuthor.className = 'text-[8px] text-gray-300';
 cardAuthor.innerText = 'by: ';
@@ -64,13 +62,14 @@ cardInfoContainer.append(cardTitleAndAuthor, productInfo);
 card.append(imgContainer, cardInfoContainer, linkContainer);
 
 function newCard(imgURL, title, time, highestBid, author, link) {
-    cardImg.src = `${imgURL}`;
-    cardAuthorSpan.innerText = `${author}`;
-    timeLeft.innerText = `${time}`;
-    cardTitle.innerText = `${title}`;
+    cardImg.src = imgURL;
+    console.log(cardImg.src);
+    cardAuthorSpan.innerText = author;
+    timeLeft.innerText = time;
+    cardTitle.innerText = title;
     hBid.innerText = `${highestBid}`;
     linkContainer.href = `${link}`;
     imgLink.href = `${link}`;
     return card;
 }
-export { newCard };
+export default newCard;

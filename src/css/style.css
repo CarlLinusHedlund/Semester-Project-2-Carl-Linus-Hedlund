@@ -2,12 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+.cardActive {
+    @apply flex;
+}
+
+.cardHidden {
+    @apply hidden;
+}
+
+.active {
+    @apply text-2xl font-extrabold text-primaryBlack-0 headerShadow;
+}
+
 .activeDropdown {
     @apply h-screen;
 }
 
 .activeMenu {
     @apply after:opacity-0 before:top-0 before:rotate-90 rotate-45;
+}
+
+.hoverBtn {
+    @apply duration-300;
 }
 
 .headerShadow {
@@ -24,8 +40,8 @@
     box-shadow: 0px 6px 42px rgba(0, 0, 0, 0.08), 0px 0.751293px 5.25905px rgba(0, 0, 0, 0.04);
 }
 
-.inputShadow {
-    filter: drop-shadow(0px 9px 49px rgba(0, 0, 0, 0.113)) drop-shadow(0px 1.12694px 6.13556px rgba(0, 0, 0, 0.415));
+.imgShadow {
+    box-shadow: 0px 6px 20px rgba(1, 1, 1, 0.54), 0px 0.751293px 2.50431px rgba(1, 1, 1, 0.27);
 }
 
 .productCardBtnShadow {
@@ -42,21 +58,10 @@
     box-shadow: 0px 45px 80px rgba(0, 0, 0, 0.04), 0px 13.5662px 24.1177px rgba(0, 0, 0, 0.0260636), 0px 5.6347px 10.0172px rgba(0, 0, 0, 0.02), 0px 2.03796px 3.62304px rgba(0, 0, 0, 0.0139364);
 }
 
-.skeleton {
-    animation: skeleton-loading 2s linear infinite alternate;
-}
-
-@keyframes skeleton-loading {
-    0% {
-        background-color: #f8f8f8;
-    }
-    100% {
-        background-color: #f3f3f3;
-    }
+.btnAnimation:hover {
+    filter: drop-shadow(0px 0px 71px rgba(209, 189, 118, 0.17)) drop-shadow(0px 0px 8.8903px rgba(209, 189, 118, 0.085));
 }
 
 .textShadowWhite {
     text-shadow: 0px -22px 92px rgba(255, 255, 255, 0.59), 0px -4.91399px 20.5494px rgba(255, 255, 255, 0.351703), 0px -1.46302px 6.11809px rgba(255, 255, 255, 0.238297);
 }
-
-/* @import url('https://fonts.googleapis.com/css2?family=K2D:wght@100;200;300;400;500;600&family=NTR&family=Oswald:wght@200;300;400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Rowdies:wght@300;400&display=swap'); */
