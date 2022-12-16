@@ -8,7 +8,7 @@ const profileImg = document.getElementById('profileImg');
 const profileName = document.getElementById('profileName');
 const winsCount = document.getElementById('winsCount');
 const modal = document.getElementById('modal');
-const modalContent = document.getElementById('modalContent');
+// const modalContent = document.getElementById('modalContent');
 
 const userName = getUserName();
 const token = getToken();
