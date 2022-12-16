@@ -24,8 +24,3 @@ async function fetchRecentPosts() {
   }
 }
 fetchRecentPosts();
-
-// for (let i = 0; i < 12; i += 1) {
-//     const card = newCard('/img/png/shoe-img.jpg', 'Mordi', '00:13:14:15', (300)[i], 'Carl Linus Hedlund', '/index.html?id=${}');
-//     productCardWrapper.innerHTML += card.outerHTML;
-// }
