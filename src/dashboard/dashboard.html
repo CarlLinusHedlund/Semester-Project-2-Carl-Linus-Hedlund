@@ -10,7 +10,9 @@
     <script type="module" src="../js/components/headerHandler.js" defer></script>
     <script type="module" src="../js/components/dropdownNav.js" defer></script>
     <script type="module" src="../js/utils/storage.js" defer></script>
-    <script type="module" src="..js/profile.js" defer></script>
+    <script type="module" src="../js/components/dashboardNav.js" defer></script>
+    <script type="module" src="../js/profile.js" defer></script>
+    <script type="module" src="../js/components/dashboardNav.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -41,13 +43,13 @@
       </div>
       <div id="dropdownNav" class="headerShadow h-0 bg-black duration-200"></div>
     </header>
-    <main>
+    <main class="h-screen">
       <div class="px-4 md:px-0 mx-auto max-w-5xl h-full w-full flex flex-col md:flex-row md:justify-between gap-5">
-        <div class="hidden nav-container md:flex flex-col items-start justify-start gap-20 border-r border-gray-200 pt-5">
+        <div class="hidden nav-container md:flex flex-col items-start justify-start gap-20 border-r border-gray-200 pt-5 max-w-[200px] overflow-hidden">
           <div class="profile-container flex pt-8 px-2 gap-3 md:min-w-[200px]">
-            <img src="../img/png/profile1.png" alt="profile" class="w-10 h-10 rounded-full" />
-            <div class="flex flex-col">
-              <p class="text-xs font-semibold truncate uppercase">Carl Linus Hedlund</p>
+            <div id="navProfileImg" class="w-10 h-10 rounded-full border text-2xl bg-gray-50 border-primaryGray-0 flex justify-center text-center"></div>
+            <div class="flex flex-col overflow-hidden max-w-[100px]">
+              <p id="navProfile" class="text-sm font-semibold truncate uppercase text-ellipsis">Carl Linus Hedlund</p>
               <p id="signOut" class="w-fit text-primaryGray-0 hover:text-primaryBlack-0 duration-200 text-xs cursor-pointer">Sign Out</p>
             </div>
           </div>
@@ -57,6 +59,64 @@
             <li><a href="overview.html" class="dashboardLink uppercase font-bold hover:scale-110 duration-300 text-primaryGray-0 hover:text-primaryBlack-0">OVERVIEW</a></li>
             <li><a href="makeAList.html" class="dashboardLink uppercase font-bold hover:scale-110 duration-300 text-primaryGray-0 hover:text-primaryBlack-0">MAKE A LIST</a></li>
           </ul>
+        </div>
+        <div class="w-full flex flex-col items-center md:items-start md:pl-20">
+          <div class="flex flex-col md:flex-row justify-center items-center pt-28 gap-5 w-full">
+            <div class="flex flex-col gap-2 items-center">
+              <div id="profileImg" class="h-36 w-36 md:h-24 md:w-24 rounded-full border flex items-center justify-center font-light text-3xl border-gray-200"></div>
+              <div id="changeAvatar" class="text-xs text-center text-primaryGray-0 cursor-pointer">Change</div>
+            </div>
+            <div class="h-full w-[80%] bg-white">
+              <div class="flex flex-col gap-1 w-full">
+                <div class="w-full">
+                  <div class="flex gap-2">
+                    <h1 id="profileName" class="text-4xl font-bold">Carl Linus Hedlund</h1>
+                    <div class="flex items-center gap-1">
+                      <span>
+                        <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M9 0L11.0206 6.21885H17.5595L12.2694 10.0623L14.2901 16.2812L9 12.4377L3.70993 16.2812L5.73056 10.0623L0.440492 6.21885H6.97937L9 0Z" id="starIcon" fill="#FFAEAE" />
+                        </svg>
+                      </span>
+                      <p id="tier" class="text-primaryGray-0">Tier 1</p>
+                    </div>
+                  </div>
+                  <div class="">
+                    <p id="winsCount" class="text-primaryGray-0 text-sm">Wins: 1</p>
+                  </div>
+                </div>
+                <div class="bg-red flex flex-col mt-10 gap-2">
+                  <p class="text-lg font-medium">Email</p>
+                  <div id="emailField" class="h-16 md:h-10 bg-gray-100 text-gray-400 text-base flex max-w- items-center rounded-md pl-3 max-w-[300px]">carhed@noroff.no</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="modal" class="hidden fixed z-50 w-full h-full left-0 top-0 bg-black/50 justify-center items-center">
+          <div id="modalContent" class="w-fit h-fit">
+            <form id="putForm" class="p-10 bg-red-500">
+              <div class="flex flex-col gap-2">
+                <label for="modalTitle">Title</label>
+                <input id="modalTitle" type="text" />
+                <label for="modalTitle" class="text-red-400">Error</label>
+              </div>
+              <div class="flex flex-col gsp-2">
+                <label for="modalSubscription">Subscription</label>
+                <input id="modalSubscription" type="text" />
+                <label for="modalSubscription" class="text-red-400">Error</label>
+              </div>
+              <div class="flex flex-col gsp-2">
+                <label for="modalTags">Tags</label>
+                <input id="modalTags" type="text" />
+                <label for="modalTags" class="text-red-400">Error</label>
+              </div>
+              <div class="flex flex-col gsp-2">
+                <label for="modalMedia">Media</label>
+                <input id="modalMedia" type="text" />
+                <label for="modalMedia" class="text-red-400">Error</label>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </main>

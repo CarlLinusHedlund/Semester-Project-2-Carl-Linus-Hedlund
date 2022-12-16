@@ -29,19 +29,16 @@ const globalErrorList = document.getElementById('errorMessageList');
 const bidErrorMessage = document.getElementById('bidErrorMessage');
 const bidSuccessMessage = document.getElementById('bidSuccessMessage');
 const inputContainer = document.getElementById('inputContainer');
-console.log();
 let errorMessage;
 let errorBidMessage;
 let bid;
 const username = getUserName();
-console.log(username);
+
 async function getProduct() {
   try {
     const response = await fetch(url);
     if (response.ok) {
       const productData = await response.json();
-      console.log(productData);
-
       if (productData.seller.name === username) {
         submitBid.classList.add('hidden');
         submitBid.disabled = true;
@@ -92,7 +89,6 @@ async function getProduct() {
       productAuthor.innerText = productData.seller.name;
     } else {
       const err = await response.json();
-      console.log(err);
       const { errors } = err;
       errors.forEach((error) => {
         errorMessage = error;

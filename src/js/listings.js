@@ -17,7 +17,8 @@ let offsetValue = 0;
 
 getUserName();
 
-const bannerContent = document.getElementById('bannerContent');
+// const bannerContent = document.getElementById('bannerContent');
+
 if (getUserName()) {
   console.log('Im signed in!!!!');
   const bannerHeader = document.getElementById('bannerHeader');
@@ -30,10 +31,6 @@ if (getUserName()) {
   bannerP.classList.className = 'text-primaryWhite-0 text-base sm:text-xl font-light';
   bannerBtn.innerText = 'Make a list';
   bannerLink.href = '../dashboard/makeAList.html';
-  // bannerContent.innerHTML += `<div class="">
-  // <h1 class="">Create and publish <br />
-  // your own list</h1>
-  // </div>`
 }
 
 const productCardWrapper = document.getElementById('productCardWrapper');
@@ -53,7 +50,6 @@ async function getProducts() {
         bids = 'No Bids';
       }
       const card = newCard(data[i].media[0] ? data[i].media[0] : 'img/png/noMediaFound.png', data[i].title, data[i].endsAt, bids, data[i].seller.name, `/specificProduct.html?id=${data[i].id}`);
-
       const test = card.querySelector('.timeLeft');
       test.innerText = countdown(data[i].endsAt);
       productCardWrapper.innerHTML += card.outerHTML;

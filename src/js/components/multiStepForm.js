@@ -16,17 +16,14 @@ const showTags = document.getElementById('showTags');
 
 // Error handling elements
 const errorMessageTitle = document.getElementById('errorMessageTitle');
-const errorMessageTags = document.getElementById('errorMessageTags');
+// const errorMessageTags = document.getElementById('errorMessageTags');
 const errorMessageImg = document.getElementById('errorMessageImg');
 const errorMessageDate = document.getElementById('errorMessageDate');
 
 const now = DateTime.now().toFormat('yyyy-MM-dd');
 const hourPlus = DateTime.now().plus({ minutes: 5 }).toFormat('HH:mm');
-// const hourNow = DateTime.now().toFormat('HH:mm');
-// const maxDay = DateTime.now().plus({ days: 10 }).toFormat('yyyy-MM-dd');
 
 date.min = `${now}T${hourPlus}`;
-// date.max = `${maxDay}T${hourNow}`;
 
 applyImg.addEventListener('click', (e) => {
   e.preventDefault();
@@ -42,7 +39,6 @@ applyImg.addEventListener('click', (e) => {
     if (previewImg.length < 5) {
       previewImgContainer.innerHTML += `
       <img src="${urlValue}" class="previewImg absolute h-full w-full opacity-1 z-${zIndex} rounded-lg">
-
       `;
     } else {
       errorMessageImg.classList.remove('hidden');
@@ -71,7 +67,7 @@ async function makeAList(body) {
     const response = await fetch(`${BASE_URL}/api/v1/auction/listings`, {
       method: 'POST',
       headers: {
-        Authorization: `bearer ${getToken}`,
+        Authorization: `bearer ${getToken()}`,
         'Content-type': 'application/json',
       },
       body: JSON.stringify(body),
@@ -111,7 +107,6 @@ publish.addEventListener('click', (e) => {
     dateValid = false;
     errorMessageDate.classList.remove('hidden');
     errorMessageDate.innerText = 'Please add valid date.';
-    console.log('add date');
   } else {
     dateValid = true;
   }

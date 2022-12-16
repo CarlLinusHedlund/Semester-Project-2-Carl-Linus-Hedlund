@@ -1,4 +1,5 @@
 import '../css/style.css';
+// import { getProfile }  from "./profile";
 
 if (window.location.href.includes('/dashboard/')) {
   if (!localStorage.getItem('user')) {
@@ -10,9 +11,3 @@ if (window.location.href.includes('/signup/') || window.location.href.includes('
     window.location.href = '/';
   }
 }
-
-const signOut = document.getElementById('signOut');
-signOut.addEventListener('click', () => {
-  localStorage.clear();
-  window.location.reload();
-});
