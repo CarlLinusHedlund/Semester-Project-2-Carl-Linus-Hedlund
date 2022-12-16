@@ -33,25 +33,24 @@ profileNav.prepend(profileNavName);
 profileNav.append(profileImg);
 
 if (window.location.href.includes('/dashboard/')) {
-    makeListLink.href = 'makeAList.html';
-    browse.href = '../listings.html';
-    dashboard.href = '#';
+  makeListLink.href = 'makeAList.html';
+  browse.href = '../listings.html';
+  dashboard.href = 'dashboard.html';
 }
 
 const dashboardLink = document.querySelectorAll('.dashboardLink');
 dashboardLink.forEach((element) => {
-    if (window.location.href.includes(element.href)) {
-        element.classList.add('active');
-    }
+  if (window.location.href.includes(element.href)) {
+    element.classList.add('active');
+  }
 });
 
 function responsiveHeader() {
-    if (user) {
-        navBarLinks.prepend(dashboard);
-        navBarLinks.prepend(makeListLink);
-        userLinks.innerHTML = '';
-        navContainer.append(profileNav);
-    }
+  if (user) {
+    navBarLinks.prepend(dashboard);
+    navBarLinks.prepend(makeListLink);
+    userLinks.innerHTML = '';
+    navContainer.append(profileNav);
+  }
 }
-
 responsiveHeader();

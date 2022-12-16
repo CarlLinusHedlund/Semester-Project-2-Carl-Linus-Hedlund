@@ -62,14 +62,13 @@ cardInfoContainer.append(cardTitleAndAuthor, productInfo);
 card.append(imgContainer, cardInfoContainer, linkContainer);
 
 function newCard(imgURL, title, time, highestBid, author, link) {
-    cardImg.src = imgURL;
-    console.log(cardImg.src);
-    cardAuthorSpan.innerText = author;
-    timeLeft.innerText = time;
-    cardTitle.innerText = title;
-    hBid.innerText = `${highestBid}`;
-    linkContainer.href = `${link}`;
-    imgLink.href = `${link}`;
-    return card;
+  cardImg.src = imgURL;
+  cardAuthorSpan.innerText = author;
+  timeLeft.innerText = time;
+  cardTitle.innerText = title;
+  hBid.innerText = `${highestBid}`;
+  linkContainer.href = `${link}`;
+  imgLink.href = `${link}`;
+  return card;
 }
 export default newCard;
