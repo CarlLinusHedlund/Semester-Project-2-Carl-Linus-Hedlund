@@ -19,6 +19,7 @@ const errorMessageTitle = document.getElementById('errorMessageTitle');
 // const errorMessageTags = document.getElementById('errorMessageTags');
 const errorMessageImg = document.getElementById('errorMessageImg');
 const errorMessageDate = document.getElementById('errorMessageDate');
+const globalErrorMessage = document.getElementById('globalErrorMessage');
 
 const now = DateTime.now().toFormat('yyyy-MM-dd');
 const hourPlus = DateTime.now().plus({ minutes: 5 }).toFormat('HH:mm');
@@ -30,7 +31,6 @@ applyImg.addEventListener('click', (e) => {
   const previewImg = [...document.querySelectorAll('.previewImg')];
   const urlValue = url.value;
   const zIndex = previewImg.length * 10;
-
   testImg.src = '';
   testImg.src = urlValue;
   testImg.onload = function () {
@@ -62,6 +62,7 @@ applyTags.addEventListener('change', (event) => {
   });
 });
 
+let errorMessage;
 async function makeAList(body) {
   try {
     const response = await fetch(`${BASE_URL}/api/v1/auction/listings`, {
@@ -73,14 +74,25 @@ async function makeAList(body) {
       body: JSON.stringify(body),
     });
     if (response.ok) {
-      const reponseData = await response.json();
-      console.log(reponseData);
+      globalErrorMessage.className = 'text-primaryBlack-0 w-fit px-10 py-4 rounded-md bg-green-300';
+      globalErrorMessage.innerText = 'List is now added. Go to overview to view or update your own listings';
+      title.value = '';
+      description.value = '';
+      date.value = '';
+      applyTags.value = '';
+      url.value = '';
     } else {
-      const responseError = await response.json();
-      console.log(responseError);
+      const err = await response.json();
+      const { errors } = err;
+      errorMessage = '';
+      errors.forEach((error) => {
+        errorMessage = error;
+      });
+      throw new Error(errorMessage);
     }
   } catch (error) {
-    console.log(error);
+    globalErrorMessage.className = 'text-primaryBlack-0 w-fit px-10 py-4 rounded-md bg-red-400';
+    globalErrorMessage.innerText = errorMessage;
   }
 }
 

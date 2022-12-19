@@ -9,6 +9,12 @@ const token = getToken();
 const user = getUserName();
 const signedIn = token && user;
 
+// Modal elements
+const modalTitle = document.getElementById('modalTitle');
+const modalDescription = document.getElementById('modalDescription');
+const modalTags = document.getElementById('modalTags');
+const previewImgContainer = document.getElementById('previewImgContainer');
+
 // HTML elements for products info
 const title = document.getElementById('productName');
 const description = document.getElementById('description');
@@ -43,14 +49,17 @@ async function getProduct() {
         submitBid.classList.add('hidden');
         submitBid.disabled = true;
         bidAmount.classList.add('hidden');
-        const editList = document.createElement('div');
-        editList.className =
-          'h-20 md:h-16 w-[65%] border-2 text-primaryGold-0 font-bold border-primaryGold-0 bg-white rounded-lg btnAnimation duration-300 hover:scale-105 flex items-center justify-center uppercase cursor-pointer';
+        const editList = document.getElementById('editList');
+        editList.classList.remove('hidden');
         editList.innerText = 'Edit your list';
         inputContainer.append(editList);
+        if (editList) {
+          modalTitle.value = productData.title;
+          modalDescription.value = productData.description;
+          modalTags.value = productData.tags;
+        }
       }
       const productDataMedia = productData.media;
-      const productsDataBids = productData.bids;
       const dataSort = productData.bids.sort((a, b) => b.amount - a.amount);
       dataSort.forEach((bids) => {
         tableBody.innerHTML += `
@@ -61,23 +70,22 @@ async function getProduct() {
                 </tr>`;
       });
 
-      if (productsDataBids.length === 0) {
+      if (dataSort.length === 0) {
         bid = 'No Bids';
         highestBid.innerText = bid;
         const tableEmpty = document.getElementById('tableEmpty');
         tableEmpty.className = '';
       } else {
-        for (let i = 0; i < productsDataBids.length; i += 1) {
-          if (productsDataBids.length > 0) {
-            const bidsLength = productsDataBids.length - 1;
-            bid = productsDataBids[bidsLength].amount;
-            highestBid.innerText = bid;
-          }
-        }
+        // eslint-disable-next-line prefer-destructuring
+        bid = dataSort[0].amount;
+        highestBid.innerText = bid;
       }
       for (let i = 0; i < productDataMedia.length; i += 1) {
         sliderContainer.innerHTML += `<div class="swiper-slide w-full h-full bg-cover bg-center rounded-lg" style="background-image: url(${productDataMedia[i]})">
                     </div>`;
+        previewImgContainer.innerHTML += `<div class="previewImg shadow-md h-[80px] w-[80px] bg-red-400 relative">
+         <img class="innerImg w-full h-full" src="${productDataMedia[i]}" alt="${productData.title}">
+       </div>`;
       }
       description.innerText = productData.description;
       time.innerHTML = countdown(productData.endsAt);

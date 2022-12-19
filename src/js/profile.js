@@ -3,19 +3,14 @@ import { BASE_URL } from './settings/api';
 
 let tier = document.getElementById('tier');
 const starIcon = document.getElementById('starIcon');
-const changeAvatar = document.getElementById('changeAvatar');
 const profileImg = document.getElementById('profileImg');
 const profileName = document.getElementById('profileName');
 const winsCount = document.getElementById('winsCount');
-const modal = document.getElementById('modal');
-const modalContent = document.getElementById('modalContent');
 
 const userName = getUserName();
+console.log(userName);
 const token = getToken();
-
-changeAvatar.addEventListener('click', () => {
-  modal.classList.remove('hidden');
-});
+console.log(token);
 
 function getUserLevel(wins) {
   if (wins <= 10) {
@@ -46,6 +41,7 @@ async function getProfile(user, tokenKey) {
       const totalWins = profileJSON.wins.length;
       getUserLevel(totalWins);
       winsCount.innerText = `Wins: ${totalWins}`;
+      console.log(profileJSON);
       if (!profileJSON.avatar) {
         const firstLetter = profileJSON.name[0];
         profileImg.innerText = firstLetter;
