@@ -15,7 +15,7 @@ const token = getToken();
     const firstLetter = response.name[0];
     navProfileImg.innerText = firstLetter;
   } else {
-    navProfileImg.src = response.avatar;
+    navProfileImg.style.backgroundImage = `url('${response.avatar}')`;
   }
 })();
 

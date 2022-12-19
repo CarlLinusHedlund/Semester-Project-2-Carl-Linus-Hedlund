@@ -27,6 +27,37 @@ const profileImg = document.createElement('div');
 profileImg.className = 'h-8 w-8 bg-gray-100 rounded-full flex justify-center items-center';
 profileImg.innerHTML = '<img class="rounded-full h-5 w-4" src="/img/png/Profile.png"/>';
 
+const profileNameMobile = document.getElementById('profileNameMobile');
+const signOutBtn = document.querySelector('.signOutBtn');
+const changeProfile = document.querySelector('.changeProfile');
+const signInMobile = document.querySelector('.signIn');
+
+signInMobile.addEventListener('click', () => {
+  if (window.location.href.includes('/dashboard/')) {
+    window.location.href = '../signin/signin.html';
+  }
+  window.location.href = 'signin/signin.html';
+});
+
+if (user) {
+  profileNameMobile.innerText = user;
+  signInMobile.classList.add('hidden');
+  changeProfile.classList.remove('hidden');
+  signOutBtn.classList.remove('hidden');
+  signOutBtn.addEventListener('click', () => {
+    localStorage.clear();
+    window.location.reload();
+  });
+
+  changeProfile.addEventListener('click', () => {
+    localStorage.clear();
+    if (window.location.href.includes('/dashboard/')) {
+      window.location.href = '../signin/signin.html';
+    }
+    window.location.href = 'signin/signin.html';
+  });
+}
+
 const profileNav = document.createElement('div');
 profileNav.className = 'flex gap-2';
 profileNav.prepend(profileNavName);

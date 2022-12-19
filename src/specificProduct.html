@@ -8,8 +8,10 @@
     <script type="module" src="./js/components/headerHandler.js" defer></script>
     <script type="module" src="./js/components/dropdownNav.js" defer></script>
     <script type="module" src="./js/specificProduct.js" defer></script>
+    <script type="module" src="./js/components/updateListing.js"></script>
     <script type="module" src="./js/utils/storage.js" defer></script>
     <script type="module" src="./js/swiper.js" defer></script>
+    <script type="module" src="./js/components/updateListing.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -38,7 +40,16 @@
         >
         </span>
       </div>
-      <div id="dropdownNav" class="headerShadow h-0 bg-black duration-200"></div>
+      <div id="dropdownNav" class="headerShadow h-0 bg-black duration-200 flex items-start justify-center overflow-hidden">
+        <ul class="flex flex-col gap-5 pt-20">
+          <li><a href="index.html" class="font-black text-3xl text-primaryWhite-0 duration-300 opacity-0 listNav">HOME</a></li>
+          <li><a href="/listings.html" class="text-primaryWhite-0 font-black text-3xl duration-300 opacity-0 listNav">BROWSE</a></li>
+          <li><a href="/dashboard/dashboard.html" class="text-primaryWhite-0 font-black text-3xl duration-300 opacity-0 listNav">PROFILE</a></li>
+          <li><a href="/dashboard/makeAList.html" class="text-primaryWhite-0 font-black text-3xl duration-300 opacity-0 listNav">MAKE A LIST</a></li>
+          <li><a href="/dashboard/overview.html" class="text-primaryWhite-0 font-black text-3xl duration-300 opacity-0 listNav">OVERVIEW</a></li>
+          <li><a href="/dashboard/wallet.html" class="text-primaryWhite-0 font-black text-3xl duration-300 opacity-0 listNav">WALLET</a></li>
+        </ul>
+      </div>
     </header>
     <main class="h-full py-10 mb-10">
       <div class="w-full max-w-5xl mx-auto">
@@ -83,6 +94,46 @@
           </div>
           <div class="flex flex-col gap-2">
             <div id="inputContainer" class="w-full flex gap-4 relative">
+              <div id="modal" class="hidden fixed z-50 w-full h-full left-0 top-0 bg-black/50 justify-center items-center overflow-y-scroll">
+                <div id="modalContent" class="w-full h-full bg-white rounded-lg max-w-[450px] px-5 py-10 flex flex-col gap-5 overflow-y-scroll">
+                  <div class="flex items-center justify-end">
+                    <p id="closeForm" class="cursor-pointer">Close</p>
+                  </div>
+                  <form id="putForm" class="flex flex-col gap-6">
+                    <div class="flex flex-col gap-2 w-full relative">
+                      <label for="modalTitle" class="text-base font-bold">Title</label>
+                      <input id="modalTitle" type="text" class="text-base font-light bg-white border border-gray-200 h-12 w-full rounded-md pl-2 outline-none" />
+                      <label id="modalTitleError" for="modalTitle" class="hidden text-red-400 text-xs absolute -bottom-4">Error</label>
+                    </div>
+                    <div class="flex flex-col gap-2 relative">
+                      <label for="modalDescription" class="text-base font-bold">Description</label>
+                      <textarea id="modalDescription" name="modalDescription" class="text-base font-light modalDescription pl-2 bg-white w-full h-36 border border-gray-200 outline-none"></textarea>
+                      <label id="modalDescriptionError" for="modalDescription" class="text-red-400 text-xs absolute -bottom-4">Maximum 200 characters</label>
+                    </div>
+                    <div class="flex flex-col gap-2 relative">
+                      <div class="flex flex-col">
+                        <label for="modalTags" class="text-base font-bold">Tags</label>
+                        <label for="modalTags" class="text-xs">Separate your tags by using comma between the tags</label>
+                      </div>
+                      <input id="modalTags" type="text" class="text-base font-light bg-white border border-gray-200 h-12 w-full rounded-md pl-2 outline-none" />
+                    </div>
+                    <div class="flex flex-col gap-2">
+                      <div>
+                        <label for="modalMedia" class="text-base font-bold">Media</label>
+                        <p class="text-xs">Paste in URL down below.</p>
+                      </div>
+                      <input id="modalMedia" type="text" class="text-base font-light bg-white border border-gray-200 h-12 w-full rounded-md pl-2 outline-none" />
+                      <label id="modalMediaError" for="modalMedia" class="text-red-400 text-sm">Error</label>
+                    </div>
+                    <div id="previewImgContainer" class="w-full h-[100px] rounded-md flex items-center flex-wrap flex-row gap-3"></div>
+                    <div class="flex flex-col justify-center gap-5">
+                      <button id="updateBtn" type="submit" class="h-12 w-full border border-primaryGold-0 rounded-md">Update List</button>
+                      <button id="deleteBtn" type="button" class="h-12 w-full border border-red-500 rounded-md">Delete List</button>
+                    </div>
+                  </form>
+                  <div id="updateListError" class="text-sm text-center p-4 rounded-md bg-red-400">error</div>
+                </div>
+              </div>
               <input
                 min="1"
                 type="number"
@@ -99,6 +150,10 @@
               >
                 PLACE BID
               </button>
+              <div
+                id="editList"
+                class="hidden h-20 md:h-16 w-[65%] border-2 text-primaryGold-0 font-bold border-primaryGold-0 bg-white rounded-lg btnAnimation duration-300 hover:scale-105 flex items-center justify-center uppercase cursor-pointer"
+              ></div>
               <label id="bidErrorMessage" for="" class="text-xs absolute -bottom-20 text-primaryBlack-0 h-14 w-full bg-red-400 rounded-lg py-2 px-4 opacity-0">Error: </label>
               <label id="bidSuccessMessage" for="" class="text-xs absolute -bottom-20 text-primaryBlack-0 h-14 w-full bg-green-300 rounded-lg py-2 px-4 opacity-0"></label>
             </div>

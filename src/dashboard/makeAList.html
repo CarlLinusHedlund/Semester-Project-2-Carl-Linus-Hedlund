@@ -39,7 +39,18 @@
         >
         </span>
       </div>
-      <div id="dropdownNav" class="headerShadow h-0 bg-black duration-200"></div>
+      <div id="dropdownNav" class="headerShadow h-0 bg-black duration-200 flex justify-center items-start overflow-hidden">
+        <ul class="flex flex-col gap-5 pt-20">
+          <ul class="flex flex-col gap-5 pt-20">
+            <li><a href="../index.html" class="font-black text-3xl text-primaryWhite-0 duration-300 opacity-0 listNav">HOME</a></li>
+            <li><a href="../listings.html" class="text-primaryWhite-0 font-black text-3xl duration-300 opacity-0 listNav">BROWSE</a></li>
+            <li><a href="dashboard.html" class="text-primaryWhite-0 font-black text-3xl duration-300 opacity-0 listNav">PROFILE</a></li>
+            <li><a href="makeAList.html" class="text-primaryWhite-0 font-black text-3xl duration-300 opacity-0 listNav">MAKE A LIST</a></li>
+            <li><a href="overview.html" class="text-primaryWhite-0 font-black text-3xl duration-300 opacity-0 listNav">OVERVIEW</a></li>
+            <li><a href="wallet.html" class="text-primaryWhite-0 font-black text-3xl duration-300 opacity-0 listNav">WALLET</a></li>
+          </ul>
+        </ul>
+      </div>
     </header>
     <main class="w-full h-full">
       <div class="px-4 md:px-0 mx-auto max-w-5xl h-full w-full flex flex-col md:flex-row md:justify-between gap-5">
@@ -154,10 +165,11 @@
             </div>
             <div id="previewImgContainer" class="w-full md:w-[40%] relative h-[200px] shadow-lg bg-cover bg-center rounded-lg" style="background-image: url('../img/png/noMediaFound.png')"></div>
           </div>
-          <div class="w-full flex items-center justify-center pt-10">
+          <div class="w-full flex items-center justify-center pt-10 flex-col gap-10">
             <button id="publish" type="submit" class="w-[80%] h-20 md:h-14 md:w-52 bg-primaryBlack-0 text-primaryWhite-0 rounded-md text-2xl md:text-lg font-normal hover:scale-105 duration-300">
               Publish
             </button>
+            <div id="globalErrorMessage" class="hidden text-primaryBlack-0 w-fit px-10 py-4 rounded-md bg-red-400">Error Message</div>
           </div>
         </form>
       </div>

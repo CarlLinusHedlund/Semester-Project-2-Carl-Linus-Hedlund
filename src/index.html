@@ -46,7 +46,27 @@
         >
         </span>
       </div>
-      <div id="dropdownNav" class="headerShadow h-0 bg-black duration-200"></div>
+      <div id="dropdownNav" class="headerShadow h-0 bg-black duration-200 flex flex-col justify-start gap-8 items-center overflow-hidden">
+        <div id="profileSectionMobile" class="w-full flex justify-start gap-8 px-5 py-5">
+          <div class="profileImgMobile w-20 h-20 rounded-full bg-red-100"></div>
+          <div>
+            <p id="profileNameMobile" class="text-xl font-bold text-primaryWhite-0">Name</p>
+            <div class="flex text-primaryWhite-0 flex-row gap-3">
+              <p class="signIn text-xs font-light text-primaryWhite-0 signIn cursor-pointer">Sign In</p>
+              <p class="text-xs font-light text-primaryWhite-0 signOutBtn cursor-pointer hidden">Sign Out</p>
+              <p class="text-xs font-light text-primaryWhite-0 changeProfile cursor-pointer hidden">Change Profile</p>
+            </div>
+          </div>
+        </div>
+        <ul class="flex flex-col gap-5 py-5">
+          <li><a href="index.html" class="font-black text-3xl text-primaryWhite-0 duration-300 opacity-0 listNav">HOME</a></li>
+          <li><a href="/listings.html" class="text-primaryWhite-0 font-black text-3xl duration-300 opacity-0 listNav">BROWSE</a></li>
+          <li><a href="/dashboard/dashboard.html" class="text-primaryWhite-0 font-black text-3xl duration-300 opacity-0 listNav">PROFILE</a></li>
+          <li><a href="/dashboard/makeAList.html" class="text-primaryWhite-0 font-black text-3xl duration-300 opacity-0 listNav">MAKE A LIST</a></li>
+          <li><a href="/dashboard/overview.html" class="text-primaryWhite-0 font-black text-3xl duration-300 opacity-0 listNav">OVERVIEW</a></li>
+          <li><a href="/dashboard/wallet.html" class="text-primaryWhite-0 font-black text-3xl duration-300 opacity-0 listNav">WALLET</a></li>
+        </ul>
+      </div>
     </header>
     <main class="h-full">
       <div class="flex flex-col md:flex-row max-w-5xl mx-auto mt-20 md:mt-40 px-2 relative h-[600px] xs:h-[700px]">
@@ -89,6 +109,7 @@
       </section>
       <section class="mx-auto max-w-5xl flex flex-col py-20 gap-7 items-center">
         <h2 class="text-2xl">RECENT LISTINGS</h2>
+        <div id="listingErrorMessage" class="hidden w-full h-20 font-light bg-red-400 flex items-center justify-center rounded-lg max-w-sm"></div>
         <div id="productCardWrapper" class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 px-4 gap-4 sm:gap-6 w-full"></div>
       </section>
     </main>

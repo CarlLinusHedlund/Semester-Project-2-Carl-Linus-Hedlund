@@ -1,6 +1,6 @@
 // Card Container
 const card = document.createElement('div');
-card.className = 'bg-white h-[350px] min-w-[200px] rounded-xl productCardShadow overflow-hidden md:hover:scale-110 duration-150 w-full';
+card.className = 'bg-white h-[350px] min-w-[200px] rounded-xl productCardShadow overflow-hidden md:hover:scale-110 duration-150 w-full card';
 
 const imgContainer = document.createElement('div');
 imgContainer.className = 'imgContainer w-full h-[49%] bg-black relative';
@@ -60,15 +60,16 @@ timeLeftContainer.append(timeLeftHeader, timeLeft);
 productInfo.append(highestBidContainer, timeLeftContainer);
 cardInfoContainer.append(cardTitleAndAuthor, productInfo);
 card.append(imgContainer, cardInfoContainer, linkContainer);
+card.id = '';
 
-function newCard(imgURL, title, time, highestBid, author, link) {
+function newCard(imgURL, title, highestBid, author, link, listId) {
   cardImg.src = imgURL;
   cardAuthorSpan.innerText = author;
-  timeLeft.innerText = time;
   cardTitle.innerText = title;
-  hBid.innerText = `${highestBid}`;
-  linkContainer.href = `${link}`;
-  imgLink.href = `${link}`;
+  hBid.innerText = highestBid;
+  linkContainer.href = link;
+  imgLink.href = link;
+  card.id = listId;
   return card;
 }
 export default newCard;

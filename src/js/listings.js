@@ -20,7 +20,6 @@ getUserName();
 // const bannerContent = document.getElementById('bannerContent');
 
 if (getUserName()) {
-  console.log('Im signed in!!!!');
   const bannerHeader = document.getElementById('bannerHeader');
   const bannerP = document.getElementById('bannerP');
   const bannerLink = document.getElementById('bannerLink');
@@ -49,13 +48,44 @@ async function getProducts() {
       } else {
         bids = 'No Bids';
       }
-      const card = newCard(data[i].media[0] ? data[i].media[0] : 'img/png/noMediaFound.png', data[i].title, data[i].endsAt, bids, data[i].seller.name, `/specificProduct.html?id=${data[i].id}`);
-      const test = card.querySelector('.timeLeft');
-      test.innerText = countdown(data[i].endsAt);
-      productCardWrapper.innerHTML += card.outerHTML;
+      const listingCards = newCard(data[i].media[0] ? data[i].media[0] : 'img/png/noMediaFound.png', data[i].title, bids, data[i].seller.name, `/specificProduct.html?id=${data[i].id}`, data[i].id);
+      productCardWrapper.innerHTML += listingCards.outerHTML;
       if (data.length > inputIndexValue) {
         seeMoreBtn.disabled = true;
       }
+      const listings = data;
+      const cards = productCardWrapper.querySelectorAll('.card');
+      const timeLeftMap = new Map();
+      const endsAtMap = new Map();
+
+      cards.forEach((card) => {
+        const timeLeft = card.querySelector('.timeLeft');
+        timeLeftMap.set(card.id, timeLeft);
+        const currList = listings.find((list) => list.id === card.id);
+        if (currList) {
+          endsAtMap.set(card.id, currList.endsAt);
+        }
+      });
+
+      timeLeftMap.forEach((timeLeft, id) => {
+        const endsAt = endsAtMap.get(id);
+        if (endsAt) {
+          const time = countdown(endsAt);
+          const timeLeftWrapper = timeLeft;
+          timeLeftWrapper.innerText = time;
+        }
+      });
+
+      setInterval(() => {
+        timeLeftMap.forEach((timeLeft, id) => {
+          const endsAt = endsAtMap.get(id);
+          if (endsAt) {
+            const time = countdown(endsAt);
+            const timeLeftContainer = timeLeft;
+            timeLeftContainer.innerText = time;
+          }
+        });
+      }, 1000);
     }
     if (!response.ok) {
       seeMoreBtn.disabled = true;
@@ -113,5 +143,4 @@ inputIndex.onchange = function showCards() {
   productCardWrapper.innerHTML = '';
   getProducts();
 };
-
 seeMoreBtn.addEventListener('click', seeMoreHandler);

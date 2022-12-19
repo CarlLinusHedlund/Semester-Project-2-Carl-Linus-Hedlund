@@ -9,6 +9,7 @@
     <script type="module" src="../js/main.js" defer></script>
     <script type="module" src="../js/components/headerHandler.js" defer></script>
     <script type="module" src="../js/components/dropdownNav.js" defer></script>
+    <script type="module" src="../js/components/changeAvatar.js" defer></script>
     <script type="module" src="../js/utils/storage.js" defer></script>
     <script type="module" src="../js/components/dashboardNav.js" defer></script>
     <script type="module" src="../js/profile.js" defer></script>
@@ -41,13 +42,22 @@
         >
         </span>
       </div>
-      <div id="dropdownNav" class="headerShadow h-0 bg-black duration-200"></div>
+      <div id="dropdownNav" class="headerShadow h-0 bg-black duration-200 flex justify-center items-start overflow-hidden">
+        <ul class="flex flex-col gap-5 pt-20">
+          <li><a href="../index.html" class="font-black text-3xl text-primaryWhite-0 duration-300 opacity-0 listNav">HOME</a></li>
+          <li><a href="../listings.html" class="text-primaryWhite-0 font-black text-3xl duration-300 opacity-0 listNav">BROWSE</a></li>
+          <li><a href="dashboard.html" class="text-primaryWhite-0 font-black text-3xl duration-300 opacity-0 listNav">PROFILE</a></li>
+          <li><a href="makeAList.html" class="text-primaryWhite-0 font-black text-3xl duration-300 opacity-0 listNav">MAKE A LIST</a></li>
+          <li><a href="overview.html" class="text-primaryWhite-0 font-black text-3xl duration-300 opacity-0 listNav">OVERVIEW</a></li>
+          <li><a href="wallet.html" class="text-primaryWhite-0 font-black text-3xl duration-300 opacity-0 listNav">WALLET</a></li>
+        </ul>
+      </div>
     </header>
     <main class="h-screen">
       <div class="px-4 md:px-0 mx-auto max-w-5xl h-full w-full flex flex-col md:flex-row md:justify-between gap-5">
         <div class="hidden nav-container md:flex flex-col items-start justify-start gap-20 border-r border-gray-200 pt-5 max-w-[200px] overflow-hidden">
           <div class="profile-container flex pt-8 px-2 gap-3 md:min-w-[200px]">
-            <div id="navProfileImg" class="w-10 h-10 rounded-full border text-2xl bg-gray-50 border-primaryGray-0 flex justify-center text-center"></div>
+            <div id="navProfileImg" class="w-10 h-10 rounded-full border text-2xl bg-gray-50 border-primaryGray-0 flex justify-center text-center bg-center bg-cover"></div>
             <div class="flex flex-col overflow-hidden max-w-[100px]">
               <p id="navProfile" class="text-sm font-semibold truncate uppercase text-ellipsis">Carl Linus Hedlund</p>
               <p id="signOut" class="w-fit text-primaryGray-0 hover:text-primaryBlack-0 duration-200 text-xs cursor-pointer">Sign Out</p>
@@ -63,8 +73,8 @@
         <div class="w-full flex flex-col items-center md:items-start md:pl-20">
           <div class="flex flex-col md:flex-row justify-center items-center pt-28 gap-5 w-full">
             <div class="flex flex-col gap-2 items-center">
-              <div id="profileImg" class="h-36 w-36 md:h-24 md:w-24 rounded-full border flex items-center justify-center font-light text-3xl border-gray-200"></div>
-              <div id="changeAvatar" class="text-xs text-center text-primaryGray-0 cursor-pointer">Change</div>
+              <div id="profileImg" class="h-36 w-36 md:h-24 md:w-24 rounded-full border flex items-center justify-center font-light text-3xl border-gray-200 bg-cover bg-center"></div>
+              <div id="changeAvatar" class="text-sm text-center text-primaryGray-0 cursor-pointer">Change</div>
             </div>
             <div class="h-full w-[80%] bg-white">
               <div class="flex flex-col gap-1 w-full">
@@ -93,28 +103,26 @@
           </div>
         </div>
         <div id="modal" class="hidden fixed z-50 w-full h-full left-0 top-0 bg-black/50 justify-center items-center">
-          <div id="modalContent" class="w-fit h-fit">
-            <form id="putForm" class="p-10 bg-red-500">
-              <div class="flex flex-col gap-2">
-                <label for="modalTitle">Title</label>
-                <input id="modalTitle" type="text" />
-                <label for="modalTitle" class="text-red-400">Error</label>
+          <div id="modalContent" class="w-full h-fit bg-white rounded-lg max-w-[400px] pb-5 mx-4 md:m-0 px-4 md:px-10 pt-5 flex flex-col gap-5">
+            <div class="flex items-center justify-end">
+              <p id="closeForm" class="">Close</p>
+            </div>
+            <form id="putForm" class="">
+              <div class="flex flex-col gap-4 w-full">
+                <div>
+                  <h2 class="text-lg font-bold">Add Image</h2>
+                  <p class="font-light text-sm">Add URL for your image down below.</p>
+                </div>
+                <div>
+                  <input id="modalUrl" type="text" class="bg-white border border-gray-200 h-12 w-full rounded-md pl-2 outline-none font-light" />
+                  <label id="modalError" for="modalUrl" class="text-red-400 text-sm"></label>
+                </div>
+                <div class="h-0 w-0">
+                  <img src="" alt="" id="testImg" />
+                </div>
+                <button type="submit" id="addImage" class="w-full bg-black text-white h-12 rounded-md">Add Image</button>
               </div>
-              <div class="flex flex-col gsp-2">
-                <label for="modalSubscription">Subscription</label>
-                <input id="modalSubscription" type="text" />
-                <label for="modalSubscription" class="text-red-400">Error</label>
-              </div>
-              <div class="flex flex-col gsp-2">
-                <label for="modalTags">Tags</label>
-                <input id="modalTags" type="text" />
-                <label for="modalTags" class="text-red-400">Error</label>
-              </div>
-              <div class="flex flex-col gsp-2">
-                <label for="modalMedia">Media</label>
-                <input id="modalMedia" type="text" />
-                <label for="modalMedia" class="text-red-400">Error</label>
-              </div>
+              <div id="globalErrorMessage" class="hidden bg-red-400 text-sm flex items-center justify-center">error message:</div>
             </form>
           </div>
         </div>
