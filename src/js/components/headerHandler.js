@@ -32,12 +32,14 @@ const signOutBtn = document.querySelector('.signOutBtn');
 const changeProfile = document.querySelector('.changeProfile');
 const signInMobile = document.querySelector('.signIn');
 
-signInMobile.addEventListener('click', () => {
-  if (window.location.href.includes('/dashboard/')) {
-    window.location.href = '../signin/signin.html';
-  }
-  window.location.href = 'signin/signin.html';
-});
+if (!user) {
+  signInMobile.addEventListener('click', () => {
+    if (window.location.href.includes('dashboard')) {
+      window.location.href = '../signin/signin.html';
+    }
+    window.location.href = 'signin/signin.html';
+  });
+}
 
 if (user) {
   profileNameMobile.innerText = user;

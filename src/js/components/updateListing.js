@@ -40,7 +40,6 @@ if (editList) {
       element.addEventListener('click', (img) => {
         img.preventDefault();
         img.target.remove();
-        console.log(img.target);
       });
     });
   });
@@ -125,7 +124,6 @@ updateBtn.addEventListener('click', (e) => {
       tags: substrings,
       media: innerImgArr,
     };
-    console.log(dataObject);
     listUpdate(dataObject);
   }
 });

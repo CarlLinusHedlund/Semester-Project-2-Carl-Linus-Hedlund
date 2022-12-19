@@ -14,11 +14,11 @@ let sortOrder = 'desc';
 let activeValue = 'true';
 let inputIndexValue = 12;
 let offsetValue = 0;
+let errorMessage;
 
 getUserName();
 
 // const bannerContent = document.getElementById('bannerContent');
-
 if (getUserName()) {
   const bannerHeader = document.getElementById('bannerHeader');
   const bannerP = document.getElementById('bannerP');
@@ -90,9 +90,18 @@ async function getProducts() {
     if (!response.ok) {
       seeMoreBtn.disabled = true;
       seeMoreBtn.className = 'hidden';
+      const err = await response.json();
+      const { errors } = err;
+      errorMessage = '';
+      errors.forEach((error) => {
+        errorMessage = error;
+      });
+      throw new Error(errorMessage);
     }
   } catch (error) {
-    console.log('hello');
+    const listErrorMessage = document.querySelector('.listErrorMessage');
+    listErrorMessage.innerText = errorMessage;
+    listErrorMessage.classList.remove('hidden');
   }
 }
 getProducts();
