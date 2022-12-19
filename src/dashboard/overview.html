@@ -47,7 +47,18 @@
         >
         </span>
       </div>
-      <div id="dropdownNav" class="headerShadow h-0 bg-black duration-200 flex justify-center items-start overflow-hidden">
+      <div id="dropdownNav" class="headerShadow h-0 bg-black duration-200 flex flex-col justify-start gap-8 items-center overflow-hidden">
+        <div id="profileSectionMobile" class="w-full flex justify-start gap-8 px-5 py-5">
+          <div class="profileImgMobile w-20 h-20 rounded-full bg-red-100"></div>
+          <div>
+            <p id="profileNameMobile" class="text-xl font-bold text-primaryWhite-0">Name</p>
+            <div class="flex text-primaryWhite-0 flex-row gap-3">
+              <p class="signIn text-xs font-light text-primaryWhite-0 signIn cursor-pointer">Sign In</p>
+              <p class="text-xs font-light text-primaryWhite-0 signOutBtn cursor-pointer hidden">Sign Out</p>
+              <p class="text-xs font-light text-primaryWhite-0 changeProfile cursor-pointer hidden">Change Profile</p>
+            </div>
+          </div>
+        </div>
         <ul class="flex flex-col gap-5 pt-20">
           <li><a href="../index.html" class="font-black text-3xl text-primaryWhite-0 duration-300 opacity-0 listNav">HOME</a></li>
           <li><a href="../listings.html" class="text-primaryWhite-0 font-black text-3xl duration-300 opacity-0 listNav">BROWSE</a></li>

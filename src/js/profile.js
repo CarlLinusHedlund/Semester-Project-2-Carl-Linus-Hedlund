@@ -8,18 +8,14 @@ const profileName = document.getElementById('profileName');
 const winsCount = document.getElementById('winsCount');
 
 const userName = getUserName();
-console.log(userName);
 const token = getToken();
-console.log(token);
 
 function getUserLevel(wins) {
   if (wins <= 10) {
-    console.log('tier 1');
     starIcon.style.fill = '#FFAEAE';
     tier.innerText = 'Tier 1';
   } else if (wins <= 15) {
     tier = 2;
-    console.log('tier 2');
     starIcon.style.fill = '#DAC063';
     tier.innerText = 'Tier 2';
   }
@@ -41,7 +37,6 @@ async function getProfile(user, tokenKey) {
       const totalWins = profileJSON.wins.length;
       getUserLevel(totalWins);
       winsCount.innerText = `Wins: ${totalWins}`;
-      console.log(profileJSON);
       if (!profileJSON.avatar) {
         const firstLetter = profileJSON.name[0];
         profileImg.innerText = firstLetter;
@@ -51,10 +46,8 @@ async function getProfile(user, tokenKey) {
       return profileJSON;
     }
     const profileError = await profileResponse.json();
-    console.log(profileError);
     return profileError;
   } catch (error) {
-    console.log(error);
     return error;
   }
 }
